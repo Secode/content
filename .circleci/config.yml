@@ -665,9 +665,9 @@ jobs:
     resource_class: medium+
     <<: *environment
     steps:
+      - checkout
       - setup_remote_docker
-      - *attach_workspace
-      - *add_ssh_keys
+      - *restore_cache
       - *prepare_environment
       - run:
           name: Install SDK Master Version
@@ -698,11 +698,6 @@ jobs:
           shell: /bin/bash
           command: |
             ./Tests/scripts/slack_notifier.sh 'sdk_unittests' ./env_results.json
-          when: always
-      - run:
-          name: Slack Notifier
-          shell: /bin/bash
-          command: |
             ./Tests/scripts/slack_notifier.sh 'sdk_faild_steps' ./env_results.json
           when: always
 
@@ -711,47 +706,8 @@ workflows:
   version: 2
   commit:
     jobs:
-      - Prepare Environment
-      - Create Instances:
-          filters:
-            branches:
-              ignore: /pull\/[0-9]+/
-      - Run Unit Testing And Lint:
-          requires:
-            - Prepare Environment
-      - Run Validations:
-          requires:
-            - Prepare Environment
-      - Server 4_1:
-          filters:
-            branches:
-              ignore: /pull\/[0-9]+/
-          requires:
-            - Create Instances
-      - Server 4_5:
-          filters:
-            branches:
-              ignore: /pull\/[0-9]+/
-          requires:
-            - Create Instances
-      - Server 5_0:
-          filters:
-            branches:
-              ignore: /pull\/[0-9]+/
-          requires:
-            - Create Instances
-      - Server 5_5:
-          filters:
-            branches:
-              ignore: /pull\/[0-9]+/
-          requires:
-            - Create Instances
-      - Server 6_0:
-          filters:
-            branches:
-              ignore: /pull\/[0-9]+/
-          requires:
-            - Create Instances
+      - Demisto SDK Nightly:
+          context: sdk_nightly_env
 
   instances_testing:
     # for details of triggered builds see https://circleci.com/docs/2.0/workflows/#nightly-example
@@ -782,7 +738,19 @@ workflows:
               only:
                 - master
     jobs:
-      - build:
+      - Prepare Environment:
+          context: nightly_env
+      - Create Instances:
+          context: nightly_env
+      - Run Unit Testing And Lint:
+          requires:
+            - Prepare Environment
+      - Run Validations:
+          requires:
+            - Prepare Environment
+      - Server 6_0:
+          requires:
+            - Create Instances
           context: nightly_env
 
   sdk_nightly:

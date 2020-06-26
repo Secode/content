@@ -5,7 +5,7 @@ import argparse
 import requests
 from circleci.api import Api as circle_api
 
-from slackclient import SlackClient
+# from slackclient import SlackClient
 
 from demisto_sdk.commands.common.tools import str2bool, run_command, LOG_COLORS, print_color, print_error
 
@@ -227,32 +227,32 @@ def slack_notifier(build_url, slack_token, test_type, env_results_file_name=None
     branch_name_reg = re.search(r'\* (.*)', branches)
     branch_name = branch_name_reg.group(1)
 
-    if branch_name == 'master':
-        print("Extracting build status")
-        if test_type == UNITTESTS_TYPE:
-            print_color("Starting Slack notifications about nightly build - unit tests", LOG_COLORS.GREEN)
-            content_team_attachments = get_attachments_for_unit_test(build_url)
-        elif test_type == SDK_UNITTESTS_TYPE:
-            print_color("Starting Slack notifications about SDK nightly build - unit tests", LOG_COLORS.GREEN)
-            content_team_attachments = get_attachments_for_unit_test(build_url, is_sdk_build=is_sdk_nightly)
-        elif test_type == 'test_playbooks':
-            print_color("Starting Slack notifications about nightly build - tests playbook", LOG_COLORS.GREEN)
-            content_team_attachments, _ = get_attachments_for_test_playbooks(build_url, env_results_file_name)
-        elif test_type == SDK_FAILED_STEPS_TYPE:
-            print_color(f'Starting Slack notifications about SDK nightly build - test playbook', LOG_COLORS.GREEN)
-            content_team_attachments, _ = get_attachments_for_all_steps(build_url)
-        else:
-            raise NotImplementedError('The test_type parameter must be only \'test_playbooks\' or \'unittests\'')
-        print('Content team attachments:\n', content_team_attachments)
-        print("Sending Slack messages to #content-team")
-        slack_client = SlackClient(slack_token)
-        slack_client.api_call(
-            "chat.postMessage",
-            channel="dmst-content-team",
-            username="Content CircleCI",
-            as_user="False",
-            attachments=content_team_attachments
-        )
+    # if branch_name == 'master':
+    print("Extracting build status")
+    if test_type == UNITTESTS_TYPE:
+        print_color("Starting Slack notifications about nightly build - unit tests", LOG_COLORS.GREEN)
+        content_team_attachments = get_attachments_for_unit_test(build_url)
+    elif test_type == SDK_UNITTESTS_TYPE:
+        print_color("Starting Slack notifications about SDK nightly build - unit tests", LOG_COLORS.GREEN)
+        content_team_attachments = get_attachments_for_unit_test(build_url, is_sdk_build=True)
+    elif test_type == 'test_playbooks':
+        print_color("Starting Slack notifications about nightly build - tests playbook", LOG_COLORS.GREEN)
+        content_team_attachments, _ = get_attachments_for_test_playbooks(build_url, env_results_file_name)
+    elif test_type == SDK_FAILED_STEPS_TYPE:
+        print_color(f'Starting Slack notifications about SDK nightly build - test playbook', LOG_COLORS.GREEN)
+        content_team_attachments = get_attachments_for_all_steps(build_url)
+    else:
+        raise NotImplementedError('The test_type parameter must be only \'test_playbooks\' or \'unittests\'')
+    print('Content team attachments:\n', content_team_attachments)
+    print("Sending Slack messages to #content-team")
+        # slack_client = SlackClient(slack_token)
+        # slack_client.api_call(
+        #     "chat.postMessage",
+        #     channel="dmst-content-team",
+        #     username="Content CircleCI",
+        #     as_user="False",
+        #     attachments=content_team_attachments
+        # )
 
 
 def main():
@@ -263,7 +263,7 @@ def main():
                        options.test_type,
                        env_results_file_name=options.env_results_file_name)
     elif options.test_type in (SDK_UNITTESTS_TYPE, SDK_FAILED_STEPS_TYPE):
-        slack_notifier(options.url, options.slack, options.node_index)
+        slack_notifier(options.url, options.slack, options.test_type)
     else:
         print_color("Not nightly build, stopping Slack Notifications about Content build", LOG_COLORS.RED)
 
