@@ -467,7 +467,7 @@ def get_recent_commits_data(content_repo):
         str: last commit hash of head.
         str: previous commit of origin/master (origin/master~1)
     """
-    return content_repo.head.commit.hexsha, content_repo.commit('origin/master~1').hexsha
+    return content_repo.commit('origin/master').hexsha, content_repo.commit('origin/master~1').hexsha
 
 
 def print_packs_summary(packs_list):
@@ -593,7 +593,7 @@ def main():
         private_packs = []
 
     # clean index and gcs from non existing or invalid packs
-    clean_non_existing_packs(index_folder_path, private_packs, storage_bucket)
+    # clean_non_existing_packs(index_folder_path, private_packs, storage_bucket)
 
     # starting iteration over packs
     for pack in packs_list:
