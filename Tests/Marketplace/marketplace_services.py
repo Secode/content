@@ -806,7 +806,7 @@ class Pack(object):
                             version_changelog = Pack._create_changelog_entry(release_notes=release_notes_lines,
                                                                              version_display_name=latest_release_notes,
                                                                              build_number=build_number,
-                                                                             new_version=False)
+                                                                             new_version=True)
 
                         else:
                             print(f"Created new release notes for version: {latest_release_notes}")
@@ -827,7 +827,7 @@ class Pack(object):
                         release_notes=self.description,
                         version_display_name=Pack.PACK_INITIAL_VERSION,
                         build_number=build_number,
-                        new_version=False)
+                        new_version=True)
 
                     print(f"Found existing release notes for version: {Pack.PACK_INITIAL_VERSION} "
                           f"in the {self._pack_name} pack.")
