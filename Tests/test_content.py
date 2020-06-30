@@ -1387,17 +1387,19 @@ def lock_expired(lock_file: storage.Blob, lock_timeout: str) -> bool:
 
 
 def main():
-    print("Time is: {}\n\n\n".format(datetime.datetime.now()))
-    tests_settings = options_handler()
-
-    # should be removed after solving: https://github.com/demisto/etc/issues/21383
-    # -------------
-    if 'master' in tests_settings.serverVersion.lower():
-        print('[{}] sleeping for 30 secs'.format(datetime.datetime.now()))
-        sleep(45)
-    # -------------
-    manage_tests(tests_settings)
-
+    # print("Time is: {}\n\n\n".format(datetime.datetime.now()))
+    # tests_settings = options_handler()
+    #
+    # # should be removed after solving: https://github.com/demisto/etc/issues/21383
+    # # -------------
+    # if 'master' in tests_settings.serverVersion.lower():
+    #     print('[{}] sleeping for 30 secs'.format(datetime.datetime.now()))
+    #     sleep(45)
+    # # -------------
+    # manage_tests(tests_settings)
+    print("failing tests on purpose to see what happens")
+    exit(1)
+    
 
 if __name__ == '__main__':
     main()
