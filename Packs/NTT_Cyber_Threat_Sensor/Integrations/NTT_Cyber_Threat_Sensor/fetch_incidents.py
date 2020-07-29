@@ -219,10 +219,7 @@ def test_module():
     else:
         errors.append('ITEMS_TO_FETCH has to be an integer')
     if len(errors) > 0:
-        return_results(
-            {"Type": entryTypes["error"],
-             "ContentsFormat": formats["text"],
-             "Contents": "Errors:\n{}".format("\n".join(errors))})
+        return_error("Errors:\n{}".format("\n".join(errors))})
 
     # So far so good, now test the API call
     data['test'] = True
@@ -230,10 +227,7 @@ def test_module():
     if 'msg' in result and result['msg'] == "Test OK":
         return_results('ok')
     else:
-        return_results(
-            {"Type": entryTypes["error"],
-             "ContentsFormat": formats["text"],
-             "Contents": "Errors:\n%s" % repr(result)})
+        return_error("Errors:\n{}".format("\n".join(errors))})
 
 
 """COMMANDS MANAGER / SWITCH PANEL
