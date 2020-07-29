@@ -138,7 +138,6 @@ def fetch_incidents():
 
     demisto.incidents(incidents)
     demisto.setLastRun(last_run)
-    return_results('ok')
 
 
 def fetch_blobs():
