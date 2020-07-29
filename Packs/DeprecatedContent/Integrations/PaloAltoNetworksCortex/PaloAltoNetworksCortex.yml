@@ -1772,5 +1772,5 @@ script:
   type: python
   subtype: python3
 tests:
-- No tests
+- Palo Alto Networks Cortex Test
 fromversion: 4.1.0

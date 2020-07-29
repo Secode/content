@@ -94,12 +94,6 @@ configuration:
   name: feedFetchInterval
   required: false
   type: 19
-- additionalinfo: Supports CSV values.
-  display: Tags
-  hidden: false
-  name: feedTags
-  required: false
-  type: 0
 - additionalinfo: When selected, the exclusion list is ignored for indicators from
     this feed. This means that if an indicator from this feed is on the exclusion
     list, the indicator might still be added to the system.
@@ -133,7 +127,7 @@ script:
     description: Fetches indicators from the feed.
     execution: false
     name: aws-get-indicators
-  dockerimage: demisto/jmespath:1.0.0.8854
+  dockerimage: demisto/jmespath:1.0.0.6980
   feed: true
   isfetch: false
   longRunning: false
@@ -143,5 +137,5 @@ script:
   subtype: python3
   type: python
 fromversion: 5.5.0
-defaultclassifier: AWS Feed
-defaultmapperin: AWS Feed-mapper
+defaultClassifier: AWS Feed
+defaultMapperIn: AWS Feed-mapper

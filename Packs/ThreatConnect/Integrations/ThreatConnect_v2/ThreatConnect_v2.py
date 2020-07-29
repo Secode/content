@@ -1,6 +1,4 @@
 ''' IMPORTS '''
-import urllib
-
 import demistomock as demisto
 from CommonServerPython import *
 
@@ -1532,7 +1530,6 @@ def associate_indicator_request(indicator_type, indicator, group_type, group_id)
     tc = get_client()
     ro = RequestObject()
     ro.set_http_method('POST')
-    indicator = urllib.parse.quote(indicator, safe='')
     ro.set_request_uri('/v2/indicators/{}/{}/groups/{}/{}'.format(indicator_type, indicator, group_type, group_id))
     response = tc.api_request(ro).json()
 

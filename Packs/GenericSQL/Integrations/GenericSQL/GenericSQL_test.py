@@ -1,12 +1,10 @@
-from GenericSQL import Client, sql_query_execute, generate_default_port_by_dialect
+from GenericSQL import Client, sql_query_execute
 import pytest
-import sqlalchemy
-import os
 
 
-class ResultMock:
+class ConnectionMock:
     def __init__(self):
-        pass
+        self.execute = []
 
     def fetchall(self):
         return []
@@ -194,8 +192,7 @@ def test_sql_queries(command, args, response, expected_result, header, mocker):
     - create the context
     - validate the expected_result and the created context
     """
-    # needed in order not to make a connection in tests
-    mocker.patch.object(Client, '_create_engine_and_connect', return_value=mocker.Mock(spec=sqlalchemy.engine.base.Connection))
+    mocker.patch.object(Client, '_create_engine_and_connect')  # needed in order not to make a connection in tests
     mocker.patch.object(Client, 'sql_query_execute_request', return_value=(response, header))
     client = Client('sql_dialect', 'server_url', 'username', 'password', 'port', 'database', "", False)
     result = command(client, args)
@@ -214,28 +211,8 @@ def test_sql_queries_with_empty_table(mocker):
     - create the context
     - validate the expected_result and the created context
     """
-    mocker.patch.object(Client, '_create_engine_and_connect', return_value=mocker.Mock(spec=sqlalchemy.engine.base.Connection))
+    mocker.patch.object(Client, '_create_engine_and_connect')
     client = Client('sql_dialect', 'server_url', 'username', 'password', 'port', 'database', "", False)
-    mocker.patch.object(client.connection, 'execute', return_value=ResultMock())
+    mocker.patch.object(client.connection, 'execute', return_value=ConnectionMock())
     result = sql_query_execute(client, ARGS3)
     assert EMPTY_OUTPUT == result[1]  # entry context is found in the 2nd place in the result of the command
-
-
-def test_mysql_integration():
-    """Test actual connection to mysql. Will be skipped unless MYSQL_HOST is set.
-    Can be used to do local debuging of connecting to MySQL by set env var MYSQL_HOST or changing the code below.
-
-    Test assumes mysql credentials: root/password
-
-    You can setup mysql locally by running:
-    docker run --name mysql-80 -e MYSQL_ROOT_PASSWORD=password -d mysql:8.0
-
-    And then set env var: MYSQL_HOST=localhost
-    """
-    host = os.getenv('MYSQL_HOST', '')
-    if not host:
-        pytest.skip('Skipping mysql integration test as MYSQL_HOST is not set')
-    dialect = 'MySQL'
-    client = Client(dialect, host, 'root', 'password', generate_default_port_by_dialect(dialect), 'mysql', "", False, True)
-    res = client.sql_query_execute_request('show processlist', {})
-    assert len(res) >= 1

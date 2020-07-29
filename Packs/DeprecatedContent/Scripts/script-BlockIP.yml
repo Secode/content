@@ -66,4 +66,4 @@ dependson:
   - panorama
   - checkpoint
 tests:
-- No tests
+- blockip_test_playbook

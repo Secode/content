@@ -38,7 +38,7 @@ comment: Generate report summaries for the passed incidents.
 enabled: true
 args:
 - name: name
-  description: Template name of the generated report in the incident.
+  description: Name of the report to generate.
   defaultValue: Investigation Summary
 - name: type
   description: Report type to generate.

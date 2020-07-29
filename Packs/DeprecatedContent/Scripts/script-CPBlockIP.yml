@@ -104,4 +104,4 @@ dependson:
   must:
   - checkpoint
 tests:
-- No tests
+- blockip_test_playbook

@@ -12,7 +12,6 @@ import requests.exceptions
 from demisto_client.demisto_api.rest import ApiException
 import demisto_client
 import json
-from Tests.tools import update_server_configuration
 
 from demisto_sdk.commands.common.tools import print_error, print_warning, print_color, LOG_COLORS
 from demisto_sdk.commands.common.constants import PB_Status
@@ -399,13 +398,11 @@ def __test_integration_instance(client, module_instance, prints_manager, thread_
     result_object = ast.literal_eval(response_data)
     success, failure_message = bool(result_object.get('success')), result_object.get('message')
     if not success:
-        server_url = client.api_client.configuration.host
         if failure_message:
-            test_failed_msg = 'Test integration failed - server: {}.\nFailure message: {}'.format(server_url,
-                                                                                                  failure_message)
+            test_failed_msg = 'Test integration failed.\nFailure message: {}'.format(failure_message)
             prints_manager.add_print_job(test_failed_msg, print_error, thread_index)
         else:
-            test_failed_msg = 'Test integration failed - server: {}.\nNo failure message.'.format(server_url)
+            test_failed_msg = 'Test integration failed\nNo failure message.'
             prints_manager.add_print_job(test_failed_msg, print_error, thread_index)
     return success, failure_message
 
@@ -423,7 +420,7 @@ def __set_server_keys(client, prints_manager, integration_params, integration_na
     if 'server_keys' not in integration_params:
         return
 
-    prints_manager.add_print_job('Setting server keys for integration: {}'.format(integration_name),
+    prints_manager.add_print_job(f'Setting server keys for integration: {integration_name}',
                                  print_color, 0, LOG_COLORS.GREEN)
 
     data = {
@@ -434,11 +431,20 @@ def __set_server_keys(client, prints_manager, integration_params, integration_na
     for key, value in integration_params.get('server_keys').items():
         data['data'][key] = value
 
-    update_server_configuration(
-        client=client,
-        server_configuration=integration_params.get('server_keys'),
-        error_msg='Failed to set server keys'
-    )
+    response_data, status_code, _ = demisto_client.generic_request_func(self=client, path='/system/config',
+                                                                        method='POST', body=data)
+
+    try:
+        result_object = ast.literal_eval(response_data)
+    except ValueError as err:
+        print_error(
+            'failed to parse response from demisto. response is {}.\nError:\n{}'.format(response_data, err))
+        return
+
+    if status_code >= 300 or status_code < 200:
+        message = result_object.get('message', '')
+        msg = "Failed to set server keys " + str(status_code) + '\n' + message
+        print_error(msg)
 
 
 def __delete_integration_instance_if_determined_by_name(client, instance_name, prints_manager, thread_index=0):
@@ -832,7 +838,7 @@ def test_integration(client, server_url, integrations, playbook_id, prints_manag
         integration_instance_name = integration.get('instance_name', '')
         integration_params = integration.get('params', None)
         is_byoi = integration.get('byoi', True)
-        validate_test = integration.get('validate_test', False)
+        validate_test = integration.get('validate_test', True)
 
         if is_mock_run:
             configure_proxy_unsecure(integration_params)

@@ -9,7 +9,6 @@ from demisto_sdk.commands.common.tools import print_color, LOG_COLORS, run_threa
 from Tests.Marketplace.marketplace_services import PACKS_FULL_PATH, IGNORED_FILES
 
 PACK_METADATA_FILE = 'pack_metadata.json'
-SUCCESS_FLAG = True
 
 
 def get_pack_display_name(pack_id):
@@ -62,15 +61,14 @@ def create_dependencies_data_structure(response_data, dependants_ids, dependenci
         create_dependencies_data_structure(response_data, next_call_dependants_ids, dependencies_data, checked_packs)
 
 
-def get_pack_dependencies(client, prints_manager, pack_data, thread_index, lock):
+def get_pack_dependencies(client, prints_manager, pack_data):
     """ Get the pack's required dependencies.
 
     Args:
         client (demisto_client): The configured client to use.
         prints_manager (ParallelPrintsManager): A prints manager object.
         pack_data (dict): Contains the pack ID and version.
-        thread_index (int): the thread index.
-        lock (Lock): A lock object.
+
     Returns:
         (list) The pack's dependencies.
     """
@@ -94,8 +92,8 @@ def get_pack_dependencies(client, prints_manager, pack_data, thread_index, lock)
             dependencies_str = ', '.join([dep['id'] for dep in dependencies_data])
             if dependencies_data:
                 message = 'Found the following dependencies for pack {}:\n{}\n'.format(pack_id, dependencies_str)
-                prints_manager.add_print_job(message, print_color, thread_index, LOG_COLORS.GREEN)
-                prints_manager.execute_thread_prints(thread_index)
+                prints_manager.add_print_job(message, print_color, 0, LOG_COLORS.GREEN)
+                prints_manager.execute_thread_prints(0)
             return dependencies_data
         else:
             result_object = ast.literal_eval(response_data)
@@ -104,24 +102,17 @@ def get_pack_dependencies(client, prints_manager, pack_data, thread_index, lock)
             raise Exception(err_msg)
     except Exception as e:
         err_msg = 'The request to get pack {} dependencies has failed. Reason:\n{}\n'.format(pack_id, str(e))
-        prints_manager.add_print_job(err_msg, print_color, thread_index, LOG_COLORS.RED)
-        prints_manager.execute_thread_prints(thread_index)
-
-        lock.acquire()
-        global SUCCESS_FLAG
-        SUCCESS_FLAG = False
-        lock.release()
+        raise Exception(err_msg)
 
 
-def search_pack(client, prints_manager, pack_display_name, thread_index, lock):
+def search_pack(client, prints_manager, pack_display_name):
     """ Make a pack search request.
 
     Args:
         client (demisto_client): The configured client to use.
         prints_manager (ParallelPrintsManager): Print manager object.
         pack_display_name (string): The pack display name.
-        thread_index (int): the thread index.
-        lock (Lock): A lock object.
+
     Returns:
         (dict): Returns the pack data if found, or empty dict otherwise.
     """
@@ -141,15 +132,15 @@ def search_pack(client, prints_manager, pack_display_name, thread_index, lock):
             pack_data = get_pack_data_from_results(search_results, pack_display_name)
             if pack_data:
                 print_msg = 'Found pack {} in bucket!\n'.format(pack_display_name)
-                prints_manager.add_print_job(print_msg, print_color, thread_index, LOG_COLORS.GREEN)
-                prints_manager.execute_thread_prints(thread_index)
+                prints_manager.add_print_job(print_msg, print_color, 0, LOG_COLORS.GREEN)
+                prints_manager.execute_thread_prints(0)
                 return pack_data
 
             else:
                 print_msg = 'Did not find pack {} in bucket.\n'.format(pack_display_name)
-                prints_manager.add_print_job(print_msg, print_color, thread_index, LOG_COLORS.RED)
-                prints_manager.execute_thread_prints(thread_index)
-                raise Exception(print_msg)
+                prints_manager.add_print_job(print_msg, print_color, 0, LOG_COLORS.YELLOW)
+                prints_manager.execute_thread_prints(0)
+                return {}
         else:
             result_object = ast.literal_eval(response_data)
             msg = result_object.get('message', '')
@@ -158,12 +149,7 @@ def search_pack(client, prints_manager, pack_display_name, thread_index, lock):
             raise Exception(err_msg)
     except Exception as e:
         err_msg = 'The request to search pack {} has failed. Reason:\n{}'.format(pack_display_name, str(e))
-        prints_manager.add_print_job(err_msg, print_color, thread_index, LOG_COLORS.RED)
-
-        lock.acquire()
-        global SUCCESS_FLAG
-        SUCCESS_FLAG = False
-        lock.release()
+        raise Exception(err_msg)
 
 
 def install_packs(client, host, prints_manager, thread_index, packs_to_install, request_timeout=9999999):
@@ -209,15 +195,13 @@ def install_packs(client, host, prints_manager, thread_index, packs_to_install, 
     except Exception as e:
         err_msg = f'The request to install packs has failed. Reason:\n{str(e)}\n'
         prints_manager.add_print_job(err_msg, print_error, thread_index, include_timestamp=True)
-
-        global SUCCESS_FLAG
-        SUCCESS_FLAG = False
+        raise Exception(err_msg)
     finally:
         prints_manager.execute_thread_prints(thread_index)
 
 
 def search_pack_and_its_dependencies(client, prints_manager, pack_id, packs_to_install,
-                                     installation_request_body, thread_index, lock):
+                                     installation_request_body, lock):
     """ Searches for the pack of the specified file path, as well as its dependencies,
         and updates the list of packs to be installed accordingly.
 
@@ -227,7 +211,6 @@ def search_pack_and_its_dependencies(client, prints_manager, pack_id, packs_to_i
         pack_id (str): The id of the pack to be installed.
         packs_to_install (list) A list of the packs to be installed in this iteration.
         installation_request_body (list): A list of packs to be installed, in the request format.
-        thread_index (int): the thread index.
         lock (Lock): A lock object.
     """
     pack_data = []
@@ -235,10 +218,10 @@ def search_pack_and_its_dependencies(client, prints_manager, pack_id, packs_to_i
     if pack_id not in packs_to_install:
         pack_display_name = get_pack_display_name(pack_id)
         if pack_display_name:
-            pack_data = search_pack(client, prints_manager, pack_display_name, thread_index, lock)
+            pack_data = search_pack(client, prints_manager, pack_display_name)
 
     if pack_data:
-        dependencies = get_pack_dependencies(client, prints_manager, pack_data, thread_index, lock)
+        dependencies = get_pack_dependencies(client, prints_manager, pack_data)
 
         current_packs_to_install = [pack_data]
         current_packs_to_install.extend(dependencies)
@@ -320,9 +303,7 @@ def search_and_install_packs_and_their_dependencies(pack_ids, client, prints_man
         prints_manager (ParallelPrintsManager): A prints manager object.
         thread_index (int): the thread index.
 
-    Returns (list, bool):
-        A list of the installed packs' ids, or an empty list if is_nightly == True.
-        A flag that indicates if the operation succeeded or not.
+    Returns (list): A list of the installed packs' ids, or an empty list if is_nightly == True.
     """
     host = client.api_client.configuration.host
 
@@ -343,11 +324,10 @@ def search_and_install_packs_and_their_dependencies(pack_ids, client, prints_man
                                 'pack_id': pack_id,
                                 'packs_to_install': packs_to_install,
                                 'installation_request_body': installation_request_body,
-                                'thread_index': thread_index,
                                 'lock': lock})
         threads_list.append(thread)
     run_threads_list(threads_list)
 
     install_packs(client, host, prints_manager, thread_index, installation_request_body)
 
-    return packs_to_install, SUCCESS_FLAG
+    return packs_to_install

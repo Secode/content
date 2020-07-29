@@ -1,6 +1,7 @@
 id: RiskSense Get Apps - Test
 version: -1
 name: RiskSense Get Apps - Test
+fromversion: 5.0.0
 description: This playbook uses the RiskSense integration and tests the various scenarios
   of the "risksense-get-apps" command.
 starttaskid: "0"
@@ -10,12 +11,12 @@ tasks:
     taskid: b8e136f3-dcf6-4762-835d-e1ef9af03e6e
     type: start
     task:
+      description: ""
       id: b8e136f3-dcf6-4762-835d-e1ef9af03e6e
       version: -1
       name: ""
       iscommand: false
       brand: ""
-      description: ''
     nexttasks:
       '#none#':
       - "11"
@@ -74,7 +75,7 @@ tasks:
       name: Execute Risksense-get-apps command from Demisto.
       description: Look up the application details.The application details can be
         searched based on input parameters like fieldname (name, network etc), operator
-        (EXACT, IN, LIKE), page, size, sort by and sort direction.
+        (EXACT, IN, LIKE), page, size, sort by and sort order.
       script: RiskSense|||risksense-get-apps
       type: regular
       iscommand: true
@@ -83,13 +84,13 @@ tasks:
       '#none#':
       - "15"
     scriptarguments:
-      exclude: {}
+      exclusive_operator: {}
       fieldname: {}
       operator: {}
       page: {}
       size: {}
       sort_by: {}
-      sort_direction: {}
+      sort_order: {}
       value: {}
     separatecontext: false
     view: |-
@@ -112,7 +113,7 @@ tasks:
       name: Is context data  exists?
       description: Look up the application details.The application details can be
         searched based on input parameters like fieldname (name, network etc), operator
-        (EXACT, IN, LIKE), page, size, sort by and sort direction.
+        (EXACT, IN, LIKE), page, size, sort by and sort order.
       type: condition
       iscommand: false
       brand: ""
@@ -361,13 +362,13 @@ tasks:
     taskid: f28b7993-cd62-4a6b-8b8c-bc30ef554ad9
     type: title
     task:
+      description: ""
       id: f28b7993-cd62-4a6b-8b8c-bc30ef554ad9
       version: -1
       name: Done
       type: title
       iscommand: false
       brand: ""
-      description: ''
     separatecontext: false
     view: |-
       {
@@ -427,4 +428,4 @@ view: |-
   }
 inputs: []
 outputs: []
-fromversion: 5.0.0
+sourceplaybookid: RiskSense Get Apps - Test

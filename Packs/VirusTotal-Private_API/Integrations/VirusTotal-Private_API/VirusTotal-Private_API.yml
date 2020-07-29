@@ -543,10 +543,10 @@ script:
     execution: false
     name: vt-private-search-file
     outputs:
-    - contextPath: VirusTotal.SearchFile.SearchResult
+    - contextPath: VirusTotal.SearchResult
       description: The hashes of files that fit the query
       type: string
-    - contextPath: VirusTotal.SearchFile.Query
+    - contextPath: VirusTotal.Query
       description: Original search query
       type: string
   - arguments:

@@ -1,57 +1,48 @@
 id: Port Scan - External Source
 version: -1
 name: Port Scan - External Source
-description: This playbook remediates port scans originating outside of the organization's
-  network.
-starttaskid: "0"
+description: This playbook remediates port scans originating outside of the organization's network.
+starttaskid: '0'
 tasks:
-  "0":
-    id: "0"
-    taskid: aa3086ed-71d4-4908-80f6-eefbd8e92174
+  '0':
+    id: '0'
+    taskid: 7c46d5ad-2e77-4213-8d84-4de23934ce23
     type: start
     task:
-      id: aa3086ed-71d4-4908-80f6-eefbd8e92174
+      id: 7c46d5ad-2e77-4213-8d84-4de23934ce23
       version: -1
-      name: ""
+      name: ''
       iscommand: false
-      brand: ""
+      brand: ''
       description: ''
     nexttasks:
       '#none#':
-      - "54"
+      - '54'
     separatecontext: false
-    view: |-
-      {
-        "position": {
-          "x": 450,
-          "y": 20
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 450,\n    \"y\": 20\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "7":
-    id: "7"
-    taskid: e873e121-9778-4d99-8160-c557b7131452
+  '7':
+    id: '7'
+    taskid: 210e916c-29cd-4362-8b55-06c0cacaa491
     type: condition
     task:
-      id: e873e121-9778-4d99-8160-c557b7131452
+      id: 210e916c-29cd-4362-8b55-06c0cacaa491
       version: -1
       name: Is there a geo-location for the attacker IP?
       description: Checks whether geo-location exists for the attacker's IP address.
       type: condition
       iscommand: false
-      brand: ""
+      brand: ''
     nexttasks:
       '#default#':
-      - "56"
-      "yes":
-      - "55"
+      - '56'
+      yes:
+      - '55'
     separatecontext: false
     conditions:
-    - label: "yes"
+    - label: yes
       condition:
       - - operator: isNotEmpty
           left:
@@ -79,37 +70,28 @@ tasks:
                   args:
                     index:
                       value:
-                        simple: "0"
+                        simple: '0'
             iscontext: true
-    view: |-
-      {
-        "position": {
-          "x": 230,
-          "y": 320
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 230,\n    \"y\": 320\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "8":
-    id: "8"
-    taskid: db51876c-7ed5-4164-83bd-a0727018311b
+  '8':
+    id: '8'
+    taskid: 5b736377-454c-4e17-81c7-2c87d3a2a041
     type: regular
     task:
-      id: db51876c-7ed5-4164-83bd-a0727018311b
+      id: 5b736377-454c-4e17-81c7-2c87d3a2a041
       version: -1
       name: Save originating country of attacker to incident field
-      description: Saves the country of the attacker's IP address in the Country incident
-        field.
+      description: Saves the country of the attacker's IP address in the Country incident field.
       script: Builtin|||setIncident
       type: regular
       iscommand: true
       brand: Builtin
     nexttasks:
       '#none#':
-      - "56"
+      - '56'
     scriptarguments:
       accountid: {}
       accountname: {}
@@ -479,35 +461,27 @@ tasks:
     reputationcalc: 1
     continueonerror: true
     separatecontext: false
-    view: |-
-      {
-        "position": {
-          "x": -20,
-          "y": 650
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": -20,\n    \"y\": 650\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "9":
-    id: "9"
-    taskid: 4c46d46a-e049-43d3-841b-0af3fc15ffb0
+  '9':
+    id: '9'
+    taskid: b1181f95-859f-4ff8-8cde-5ce34367eac9
     type: regular
     task:
-      id: 4c46d46a-e049-43d3-841b-0af3fc15ffb0
+      id: b1181f95-859f-4ff8-8cde-5ce34367eac9
       version: -1
       name: Update NIST stage - Containment
       description: Updates the NIST Stage field to Containment.
-      script: Builtin|||setIncident
       type: regular
+      script: Builtin|||setIncident
       iscommand: true
       brand: Builtin
     nexttasks:
       '#none#':
-      - "12"
-      - "50"
+      - '12'
+      - '50'
     scriptarguments:
       accountgroups: {}
       accountid: {}
@@ -831,38 +805,30 @@ tasks:
     reputationcalc: 1
     continueonerror: true
     separatecontext: false
-    view: |-
-      {
-        "position": {
-          "x": 460,
-          "y": 1130
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 460,\n    \"y\": 1130\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "10":
-    id: "10"
-    taskid: dfec07cc-9f73-4202-86bb-988170e78c51
+  '10':
+    id: '10'
+    taskid: 93bb36b0-2e35-48ea-8d7b-d94574360a74
     type: condition
     task:
-      id: dfec07cc-9f73-4202-86bb-988170e78c51
+      id: 93bb36b0-2e35-48ea-8d7b-d94574360a74
       version: -1
       name: Is DomainTools enabled?
       description: Checks whether the DomainTools integration is enabled.
       type: condition
       iscommand: false
-      brand: ""
+      brand: ''
     nexttasks:
       '#default#':
-      - "56"
-      "yes":
-      - "11"
+      - '56'
+      yes:
+      - '11'
     separatecontext: false
     conditions:
-    - label: "yes"
+    - label: yes
       condition:
       - - operator: isExists
           left:
@@ -887,24 +853,16 @@ tasks:
                       value:
                         simple: active
             iscontext: true
-    view: |-
-      {
-        "position": {
-          "x": 680,
-          "y": 320
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 680,\n    \"y\": 320\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "11":
-    id: "11"
-    taskid: 96c4a27c-6721-4619-8d92-2e73baa25c0d
+  '11':
+    id: '11'
+    taskid: aac46718-a009-48ac-8fdc-caf1505d9120
     type: regular
     task:
-      id: 96c4a27c-6721-4619-8d92-2e73baa25c0d
+      id: aac46718-a009-48ac-8fdc-caf1505d9120
       version: -1
       name: Reverse IP lookup
       description: Gets domain names associated with the attacker's IP address.
@@ -914,7 +872,7 @@ tasks:
       brand: DomainTools
     nexttasks:
       '#none#':
-      - "49"
+      - '49'
     scriptarguments:
       domain: {}
       ip:
@@ -925,38 +883,30 @@ tasks:
       limit: {}
     reputationcalc: 2
     separatecontext: false
-    view: |-
-      {
-        "position": {
-          "x": 790,
-          "y": 510
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 790,\n    \"y\": 510\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "12":
-    id: "12"
-    taskid: bd0e1f26-dd7b-4ebc-8307-c7db4d0b3472
+  '12':
+    id: '12'
+    taskid: 6c613469-b1c0-4701-80ee-874413c197bf
     type: condition
     task:
-      id: bd0e1f26-dd7b-4ebc-8307-c7db4d0b3472
+      id: 6c613469-b1c0-4701-80ee-874413c197bf
       version: -1
       name: Should the attacker IP be blocked automatically?
-      description: Checks whether the BlockAttackerIP input is set to True.
       type: condition
       iscommand: false
-      brand: ""
+      brand: ''
+      description: ''
     nexttasks:
       '#default#':
-      - "38"
-      "yes":
-      - "33"
+      - '38'
+      yes:
+      - '33'
     separatecontext: false
     conditions:
-    - label: "yes"
+    - label: yes
       condition:
       - - operator: isEqualString
           left:
@@ -965,43 +915,31 @@ tasks:
             iscontext: true
           right:
             value:
-              simple: "True"
+              simple: 'True'
           ignorecase: true
-    view: |-
-      {
-        "position": {
-          "x": -50,
-          "y": 1310
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": -50,\n    \"y\": 1310\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "33":
-    id: "33"
-    taskid: dde17aa8-8356-4d45-8bf5-f971751536f5
+  '33':
+    id: '33'
+    taskid: ad805a2c-a117-4104-8e8f-759009a115d6
     type: playbook
     task:
-      id: dde17aa8-8356-4d45-8bf5-f971751536f5
+      id: ad805a2c-a117-4104-8e8f-759009a115d6
       version: -1
       name: Block IP - Generic v2
-      description: |-
-        This playbook blocks malicious IPs using all integrations that are enabled.
-
-        Supported integrations for this playbook:
-        * Check Point Firewall
-        * Palo Alto Networks Minemeld
-        * Palo Alto Networks PAN-OS
-        * Zscaler
+      description: "This playbook blocks malicious IPs using all integrations that\
+        \ are enabled.\n\nSupported integrations for this playbook:\n* Check Point\
+        \ Firewall\n* Palo Alto Networks Minemeld\n* Palo Alto Networks PAN-OS\n*\
+        \ Zscaler"
       playbookName: Block IP - Generic v2
       type: playbook
       iscommand: false
-      brand: ""
+      brand: ''
     nexttasks:
       '#none#':
-      - "58"
+      - '58'
     scriptarguments:
       IP:
         complex:
@@ -1023,7 +961,7 @@ tasks:
                 iscontext: true
               right:
                 value:
-                  simple: "no"
+                  simple: no
               ignorecase: true
           accessor: Address
           transformers:
@@ -1032,92 +970,65 @@ tasks:
     separatecontext: true
     loop:
       iscommand: false
-      exitCondition: ""
+      exitCondition: ''
       wait: 1
-      max: 0
-    view: |-
-      {
-        "position": {
-          "x": 170,
-          "y": 1500
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 170,\n    \"y\": 1500\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "38":
-    id: "38"
-    taskid: 08deeee7-bb9d-41bf-80dd-ffec3086610a
+  '38':
+    id: '38'
+    taskid: 1fea69cd-c7ac-447a-8329-4c74ebb37fe1
     type: regular
     task:
-      id: 08deeee7-bb9d-41bf-80dd-ffec3086610a
+      id: 1fea69cd-c7ac-447a-8329-4c74ebb37fe1
       version: -1
       name: Manually block IPs
       description: Manually block the attacker IPs in the firewall.
       type: regular
       iscommand: false
-      brand: ""
+      brand: ''
     nexttasks:
       '#none#':
-      - "41"
+      - '41'
     separatecontext: false
-    view: |-
-      {
-        "position": {
-          "x": -270,
-          "y": 1500
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": -270,\n    \"y\": 1500\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "41":
-    id: "41"
-    taskid: 92fbbea3-4d48-48c0-899b-16d1baa8c98e
+  '41':
+    id: '41'
+    taskid: a432da1e-ecf2-45da-85fc-12dc1d6136c8
     type: title
     task:
-      id: 92fbbea3-4d48-48c0-899b-16d1baa8c98e
+      id: a432da1e-ecf2-45da-85fc-12dc1d6136c8
       version: -1
       name: Continue
       type: title
       iscommand: false
-      brand: ""
+      brand: ''
       description: ''
     separatecontext: false
-    view: |-
-      {
-        "position": {
-          "x": 460,
-          "y": 1870
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 460,\n    \"y\": 1870\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "48":
-    id: "48"
-    taskid: 837023d0-4f76-4637-8a1e-482061a38a5c
+  '48':
+    id: '48'
+    taskid: 1441968e-a72c-4bdb-856b-d06862fca506
     type: playbook
     task:
-      id: 837023d0-4f76-4637-8a1e-482061a38a5c
+      id: 1441968e-a72c-4bdb-856b-d06862fca506
       version: -1
       name: Indicator Pivoting - DomainTools Iris
-      description: Pivots are used to gather data that share a common attribute with
-        a domain. For instance, pivoting on an IP Address will give you back all domains
-        related to that IP address.
       playbookName: Indicator Pivoting - DomainTools Iris
       type: playbook
       iscommand: false
-      brand: ""
+      brand: ''
+      description: 'Pivots are used to gather data that share a common attribute with a domain. For instance, pivoting on an IP Address will give you back all domains related to that IP address.'
     nexttasks:
       '#none#':
-      - "49"
+      - '49'
     scriptarguments:
       EmailAddress: {}
       EmailAddressCount: {}
@@ -1132,43 +1043,34 @@ tasks:
       NameServerIPAddress: {}
       NameServerIPAddressCount: {}
       PivotThreshold:
-        simple: "500"
+        simple: '500'
       SSLHash: {}
       SSLHashCount: {}
     separatecontext: true
     loop:
       iscommand: false
-      exitCondition: ""
+      exitCondition: ''
       wait: 1
-      max: 0
-    view: |-
-      {
-        "position": {
-          "x": 1380,
-          "y": 510
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 1380,\n    \"y\": 510\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "49":
-    id: "49"
-    taskid: 297e92e6-08e2-4345-8b3e-5d3b665069d4
+  '49':
+    id: '49'
+    taskid: 0f804057-f608-4459-8b6c-979218c8a653
     type: playbook
     task:
-      id: 297e92e6-08e2-4345-8b3e-5d3b665069d4
+      id: 0f804057-f608-4459-8b6c-979218c8a653
       version: -1
       name: Domain Enrichment - Generic v2
       playbookName: Domain Enrichment - Generic v2
       type: playbook
       iscommand: false
-      brand: ""
+      brand: ''
       description: ''
     nexttasks:
       '#none#':
-      - "56"
+      - '56'
     scriptarguments:
       Domain:
         complex:
@@ -1185,27 +1087,18 @@ tasks:
     separatecontext: true
     loop:
       iscommand: false
-      exitCondition: ""
+      exitCondition: ''
       wait: 1
-      max: 0
-    view: |-
-      {
-        "position": {
-          "x": 790,
-          "y": 700
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 790,\n    \"y\": 700\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "50":
-    id: "50"
-    taskid: 96b1c231-e1f4-4e74-8c41-17f285a36280
+  '50':
+    id: '50'
+    taskid: f9078a72-a38d-4d6f-8ae1-6b35184ba780
     type: condition
     task:
-      id: 96b1c231-e1f4-4e74-8c41-17f285a36280
+      id: f9078a72-a38d-4d6f-8ae1-6b35184ba780
       version: -1
       name: Can malicious domains hosted on the IP be blocked?
       description: Checks whether domains can be blocked automatically, and whether
@@ -1213,15 +1106,15 @@ tasks:
         process.
       type: condition
       iscommand: false
-      brand: ""
+      brand: ''
     nexttasks:
       '#default#':
-      - "52"
-      "yes":
-      - "51"
+      - '52'
+      yes:
+      - '51'
     separatecontext: false
     conditions:
-    - label: "yes"
+    - label: yes
       condition:
       - - operator: isNotEmpty
           left:
@@ -1245,7 +1138,7 @@ tasks:
                       iscontext: true
                     right:
                       value:
-                        simple: "3"
+                        simple: '3'
             iscontext: true
       - - operator: isEqualString
           left:
@@ -1255,42 +1148,34 @@ tasks:
             iscontext: true
           right:
             value:
-              simple: "True"
+              simple: 'True'
           ignorecase: true
-    view: |-
-      {
-        "position": {
-          "x": 1000,
-          "y": 1310
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 1000,\n    \"y\": 1310\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "51":
-    id: "51"
-    taskid: 1c6c9b96-d952-4e62-843e-f462f8213999
+  '51':
+    id: '51'
+    taskid: 6e48fce0-8669-4ee4-8e17-315db109b350
     type: playbook
     task:
-      id: 1c6c9b96-d952-4e62-843e-f462f8213999
+      id: 6e48fce0-8669-4ee4-8e17-315db109b350
       version: -1
       name: PAN-OS - Block Domain - External Dynamic List
-      description: |-
-        This playbook blocks Domains using Palo Alto Networks Panorama or Firewall External Dynamic Lists.
-        It checks if the EDL configuration is in place with the 'PAN-OS EDL Setup' sub-playbook
-        (otherwise the list will be configured), and adds the input Domains to the relevant lists.
+      description: "This playbook blocks Domains using Palo Alto Networks Panorama\
+        \ or Firewall External Dynamic Lists.\nIt checks if the EDL configuration\
+        \ is in place with the 'PAN-OS EDL Setup' sub-playbook\n(otherwise the list\
+        \ will be configured), and adds the input Domains to the relevant lists."
       playbookName: PAN-OS - Block Domain - External Dynamic List
       type: playbook
       iscommand: false
-      brand: ""
+      brand: ''
     nexttasks:
       '#none#':
-      - "57"
+      - '57'
     scriptarguments:
       AutoCommit:
-        simple: "No"
+        simple: No
       Domain:
         complex:
           root: DBotScore
@@ -1311,7 +1196,7 @@ tasks:
                 iscontext: true
               right:
                 value:
-                  simple: "3"
+                  simple: '3'
           accessor: Indicator
           transformers:
           - operator: uniq
@@ -1325,56 +1210,39 @@ tasks:
     separatecontext: true
     loop:
       iscommand: false
-      exitCondition: ""
+      exitCondition: ''
       wait: 1
-      max: 0
-    view: |-
-      {
-        "position": {
-          "x": 750,
-          "y": 1500
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 750,\n    \"y\": 1500\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: true
-    quietmode: 0
-  "52":
-    id: "52"
-    taskid: 82f7571d-ccdd-4bec-871b-f2a2a948bc50
+  '52':
+    id: '52'
+    taskid: a70339f4-38a1-4ec6-8315-99d6b19c7cc8
     type: regular
     task:
-      id: 82f7571d-ccdd-4bec-871b-f2a2a948bc50
+      id: a70339f4-38a1-4ec6-8315-99d6b19c7cc8
       version: -1
       name: Manually block related malicious domains
       description: Manually block malicious domains that were found to be associated
         with the attacker's IP address.
       type: regular
       iscommand: false
-      brand: ""
+      brand: ''
     nexttasks:
       '#none#':
-      - "41"
+      - '41'
     separatecontext: false
-    view: |-
-      {
-        "position": {
-          "x": 1250,
-          "y": 1500
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 1250,\n    \"y\": 1500\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "54":
-    id: "54"
-    taskid: 7e666585-4779-44d7-8563-cddc521b3a1d
+  '54':
+    id: '54'
+    taskid: 7f7357df-9a1c-41ae-8ea6-214ad1e03e16
     type: regular
     task:
-      id: 7e666585-4779-44d7-8563-cddc521b3a1d
+      id: 7f7357df-9a1c-41ae-8ea6-214ad1e03e16
       version: -1
       name: Update scan source type
       description: Updates the scan source type to "External".
@@ -1384,9 +1252,9 @@ tasks:
       brand: Builtin
     nexttasks:
       '#none#':
-      - "7"
-      - "10"
-      - "59"
+      - '7'
+      - '10'
+      - '59'
     scriptarguments:
       accountgroups: {}
       accountid: {}
@@ -1709,13 +1577,7 @@ tasks:
     reputationcalc: 1
     continueonerror: true
     separatecontext: false
-    view: |-
-      {
-        "position": {
-          "x": 450,
-          "y": 150
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 450,\n    \"y\": 150\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
@@ -1723,25 +1585,23 @@ tasks:
     - incidentfield: Scan Source Type
       output:
         simple: External
-    skipunavailable: false
-    quietmode: 0
-  "55":
-    id: "55"
-    taskid: fb50b7cc-087f-4ad0-8d9a-a49060325bb2
+  '55':
+    id: '55'
+    taskid: d9b01339-2f8a-4985-8697-296e07c5b4e3
     type: regular
     task:
-      id: fb50b7cc-087f-4ad0-8d9a-a49060325bb2
+      id: d9b01339-2f8a-4985-8697-296e07c5b4e3
       version: -1
       name: Save attacker IP to local context
-      description: Saves the attacker IP address to the SourceExternalIPs context
-        key, outside of the playbook inputs.
+      description: Saves the attacker IP address to the SourceExternalIPs context key, outside of
+        the playbook inputs.
       scriptName: SetAndHandleEmpty
       type: regular
       iscommand: false
-      brand: ""
+      brand: ''
     nexttasks:
       '#none#':
-      - "8"
+      - '8'
     scriptarguments:
       append: {}
       key:
@@ -1753,40 +1613,29 @@ tasks:
           transformers:
           - operator: uniq
     separatecontext: false
-    view: |-
-      {
-        "position": {
-          "x": -20,
-          "y": 490
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": -20,\n    \"y\": 490\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "56":
-    id: "56"
-    taskid: 59110f15-f1ec-49cb-8c15-0c19bfe7a098
+  '56':
+    id: '56'
+    taskid: 0e1ded8e-6fa7-402e-84bd-45827d615467
     type: playbook
     task:
-      id: 59110f15-f1ec-49cb-8c15-0c19bfe7a098
+      id: 0e1ded8e-6fa7-402e-84bd-45827d615467
       version: -1
       name: Calculate Severity - Generic v2
-      description: |-
-        Calculate and assign the incident severity based on the highest returned severity level from the following calculations:
-
-        - DBotScores of indicators
-        - Critical assets
-        - Email authenticity
-        - Current incident severity
+      description: "Calculate and assign the incident severity based on the highest\
+        \ returned severity level from the following calculations:\n\n- DBotScores\
+        \ of indicators\n- Critical assets\n- Email authenticity\n- Current incident\
+        \ severity"
       playbookName: Calculate Severity - Generic v2
       type: playbook
       iscommand: false
-      brand: ""
+      brand: ''
     nexttasks:
       '#none#':
-      - "9"
+      - '9'
     scriptarguments:
       Account: {}
       CriticalEndpoints:
@@ -1807,27 +1656,18 @@ tasks:
     separatecontext: true
     loop:
       iscommand: false
-      exitCondition: ""
+      exitCondition: ''
       wait: 1
-      max: 0
-    view: |-
-      {
-        "position": {
-          "x": 460,
-          "y": 920
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 460,\n    \"y\": 920\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "57":
-    id: "57"
-    taskid: f57c255a-834b-43cd-8374-16a4e9920a22
+  '57':
+    id: '57'
+    taskid: 28549a4a-b07d-484e-8547-bc13257f6038
     type: regular
     task:
-      id: f57c255a-834b-43cd-8374-16a4e9920a22
+      id: 28549a4a-b07d-484e-8547-bc13257f6038
       version: -1
       name: Update incident fields with blocked domains
       description: Updates the Associated Malicious Domains and Malicious Domains
@@ -1838,7 +1678,7 @@ tasks:
       brand: Builtin
     nexttasks:
       '#none#':
-      - "41"
+      - '41'
     scriptarguments:
       accountgroups: {}
       accountid: {}
@@ -1875,7 +1715,7 @@ tasks:
                 iscontext: true
               right:
                 value:
-                  simple: "3"
+                  simple: '3'
           accessor: Indicator
           transformers:
           - operator: uniq
@@ -2025,7 +1865,7 @@ tasks:
       maliciousbehavior: {}
       maliciouscauseifthecauseisamaliciousattack: {}
       maliciousdomainsblocked:
-        simple: "True"
+        simple: 'True'
       malwarefamily: {}
       markdowntest: {}
       measurestomitigate: {}
@@ -2187,24 +2027,16 @@ tasks:
       xdrusercount: {}
     reputationcalc: 1
     separatecontext: false
-    view: |-
-      {
-        "position": {
-          "x": 750,
-          "y": 1660
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 750,\n    \"y\": 1660\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "58":
-    id: "58"
-    taskid: a4123a06-c6d9-4fa9-8b92-1f4d11018a40
+  '58':
+    id: '58'
+    taskid: 0a24fb15-ea8d-465d-8ce6-564dfc0fc635
     type: regular
     task:
-      id: a4123a06-c6d9-4fa9-8b92-1f4d11018a40
+      id: 0a24fb15-ea8d-465d-8ce6-564dfc0fc635
       version: -1
       name: Update incident fields with blocked IP
       description: Updates the Attacker IP Blocked field.
@@ -2214,7 +2046,7 @@ tasks:
       brand: Builtin
     nexttasks:
       '#none#':
-      - "41"
+      - '41'
     scriptarguments:
       accountgroups: {}
       accountid: {}
@@ -2241,7 +2073,7 @@ tasks:
       attachmenttype: {}
       attackerhostisolated: {}
       attackeripblocked:
-        simple: "True"
+        simple: 'True'
       attackerusername: {}
       blockedaction: {}
       bugtraq: {}
@@ -2535,38 +2367,30 @@ tasks:
       xdrusercount: {}
     reputationcalc: 1
     separatecontext: false
-    view: |-
-      {
-        "position": {
-          "x": 170,
-          "y": 1660
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 170,\n    \"y\": 1660\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "59":
-    id: "59"
-    taskid: 1c99695c-7353-4485-873e-5f6bde306fdb
+  '59':
+    id: '59'
+    taskid: 7800cb60-e277-4a0b-81ab-872a8cd050bc
     type: condition
     task:
-      id: 1c99695c-7353-4485-873e-5f6bde306fdb
+      id: 7800cb60-e277-4a0b-81ab-872a8cd050bc
       version: -1
       name: Is DomainTools Iris enabled?
       description: Checks whether the DomainTools Iris integration is enabled.
       type: condition
       iscommand: false
-      brand: ""
+      brand: ''
     nexttasks:
       '#default#':
-      - "56"
-      "yes":
-      - "48"
+      - '56'
+      yes:
+      - '48'
     separatecontext: false
     conditions:
-    - label: "yes"
+    - label: yes
       condition:
       - - operator: isExists
           left:
@@ -2591,55 +2415,31 @@ tasks:
                       value:
                         simple: active
             iscontext: true
-    view: |-
-      {
-        "position": {
-          "x": 1200,
-          "y": 320
-        }
-      }
+    view: "{\n  \"position\": {\n    \"x\": 1200,\n    \"y\": 320\n  }\n}"
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-view: |-
-  {
-    "linkLabelsPosition": {
-      "10_56_#default#": 0.21,
-      "12_33_yes": 0.39,
-      "59_56_#default#": 0.1,
-      "7_56_#default#": 0.22
-    },
-    "paper": {
-      "dimensions": {
-        "height": 1915,
-        "width": 2030,
-        "x": -270,
-        "y": 20
-      }
-    }
-  }
+view: "{\n  \"linkLabelsPosition\": {\n    \"10_56_#default#\": 0.21,\n    \"12_33_yes\"\
+  : 0.39,\n    \"59_56_#default#\": 0.1,\n    \"7_56_#default#\": 0.22\n  },\n  \"\
+  paper\": {\n    \"dimensions\": {\n      \"height\": 1915,\n      \"width\": 2030,\n\
+  \      \"x\": -270,\n      \"y\": 20\n    }\n  }\n}"
 inputs:
 - key: BlockAttackerIP
   value:
-    simple: "False"
+    simple: 'False'
   required: true
   description: Whether attacking IPs should be automatically blocked using firewalls.
-  playbookInputQuery:
 - key: SourceExternalIPs
   value: {}
   required: false
   description: The external IP address(es) that initiated the port scan.
-  playbookInputQuery:
 - key: BlockMaliciousDomains
   value:
-    simple: "False"
+    simple: 'False'
   required: true
   description: In the event that reverse IP lookup is performed, and a malicious domain
     is found, setting this to True will automatically block the malicious domains.
     If set to False, an analyst can manually block the domains.
-  playbookInputQuery:
 - key: DBotScore
   value:
     complex:
@@ -2648,8 +2448,8 @@ inputs:
   description: All the DBotScores that were calculated, either automatically by auto-reputation
     or using specific tasks, when the incident was ingested. This is used to calculate
     the incident severity at a later stage.
-  playbookInputQuery:
 outputs: []
+sourceplaybookid: Port Scan - Generic
 fromversion: 5.0.0
 tests:
-- no test
+  - no test

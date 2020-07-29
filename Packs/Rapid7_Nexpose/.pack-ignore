@@ -9,6 +9,3 @@ ignore=BA101
 
 [file:playbook-Vulnerability_Management_-_Nexpose_(Job).yml]
 ignore=BA101
-
-[file:Rapid7_Nexpose]
-ignore=PA116

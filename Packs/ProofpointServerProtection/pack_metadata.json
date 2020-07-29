@@ -10,7 +10,9 @@
     "categories": [
         "Email Gateway"
     ],
-    "tags": [],
+    "tags": [
+        "Proofpoint Protection Server"
+    ],
     "useCases": [],
     "keywords": []
 }

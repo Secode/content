@@ -1,15 +1,16 @@
+import demistomock as demisto
 from CommonServerPython import *
+from CommonServerUserPython import *
 # IMPORTS
-import urllib3
 import csv
 import requests
 import itertools
 import traceback
 import urllib.parse
-from typing import Tuple, Optional, List
+from typing import Tuple, Optional
 
 # Disable insecure warnings
-urllib3.disable_warnings()
+requests.packages.urllib3.disable_warnings()
 INTEGRATION_NAME = 'Recorded Future'
 
 # taken from recorded future docs
@@ -35,8 +36,7 @@ class Client(BaseClient):
 
     def __init__(self, indicator_type: str, api_token: str, services: list, risk_rule: str = None,
                  fusion_file_path: str = None, insecure: bool = False,
-                 polling_timeout: int = 20, proxy: bool = False, threshold: int = 65,
-                 tags: Optional[list] = None):
+                 polling_timeout: int = 20, proxy: bool = False, threshold: int = 65):
         """
         Attributes:
              indicator_type: string, the indicator type of the feed.
@@ -48,10 +48,9 @@ class Client(BaseClient):
              polling_timeout: timeout of the polling request in seconds. Default: 20
              proxy: Sets whether use proxy when sending requests
              threshold: The minimum score from the feed in order to to determine whether the indicator is malicious.
-             tags: A list of tags to add to indicators
         """
-        if tags is None:
-            tags = []
+
+        super().__init__(self.BASE_URL, proxy=proxy, verify=not insecure)
         try:
             self.polling_timeout = int(polling_timeout)
         except (ValueError, TypeError):
@@ -63,8 +62,6 @@ class Client(BaseClient):
         self.services = services
         self.indicator_type = indicator_type
         self.threshold = int(threshold)
-        self.tags = tags
-        super().__init__(self.BASE_URL, proxy=proxy, verify=not insecure)
 
     def _build_request(self, service, indicator_type):
         """Builds the request for the Recorded Future feed.
@@ -100,8 +97,6 @@ class Client(BaseClient):
                                         url + fusion_path,
                                         headers=self.headers,
                                         params=self.PARAMS)
-        else:
-            raise DemistoException(f'Service unknown: {service}')
         return response.prepare()
 
     def build_iterator(self, service, indicator_type):
@@ -181,23 +176,18 @@ class Client(BaseClient):
                 return_error("You entered a fusion file path but the 'fusion' service is not chosen. "
                              "Add the 'fusion' service to the list or remove the fusion file path.")
 
-    def get_risk_rules(self, indicator_type: Optional[str] = None) -> dict:
-        if indicator_type is None:
-            indicator_type = self.indicator_type
-        return self._http_request(
-            method='GET',
-            url_suffix=indicator_type + '/riskrules',
-            params=self.PARAMS,
-            headers=self.headers
-        )
-
 
 def is_valid_risk_rule(client: Client, risk_rule):
     """Checks if the risk rule is valid by requesting from RF a list of all available rules.
     Returns:
         bool. Whether the risk rule is valid or not
     """
-    risk_rule_response: dict = client.get_risk_rules()
+    risk_rule_response = client._http_request(
+        method='GET',
+        url_suffix=client.indicator_type + '/riskrules',
+        params=client.PARAMS,
+        headers=client.headers
+    )
     risk_rules_list = [single_risk_rule['name'] for single_risk_rule in risk_rule_response['data']['results']]
     if risk_rule in risk_rules_list:
         return True
@@ -205,7 +195,7 @@ def is_valid_risk_rule(client: Client, risk_rule):
         return False
 
 
-def test_module(client: Client, *args) -> Tuple[str, dict, dict]:
+def test_module(client: Client, args: dict) -> Tuple[str, dict, dict]:
     """Builds the iterator to check that the feed is accessible.
     Args:
         client(Client): Recorded Future Feed client.
@@ -291,7 +281,7 @@ def format_risk_string(risk_string):
     return f'{splitted_risk_string[0]} of {splitted_risk_string[1]} Risk Rules Triggered'
 
 
-def fetch_indicators_command(client, indicator_type, limit: Optional[int] = None) -> List[dict]:
+def fetch_indicators_command(client, indicator_type, limit: Optional[int] = None):
     """Fetches indicators from the Recorded Future feeds.
     Args:
         client(Client): Recorded Future Feed client.
@@ -317,20 +307,17 @@ def fetch_indicators_command(client, indicator_type, limit: Optional[int] = None
             if evidence_details:
                 raw_json['EvidenceDetails'] = evidence_details
                 for rule in evidence_details:
-                    rule = dict((key.lower(), value) for key, value in rule.items())
+                    rule = dict((k.lower(), v) for k, v in rule.items())
                     lower_case_evidence_details_keys.append(rule)
             risk_string = item.get('RiskString')
             if isinstance(risk_string, str):
                 raw_json['RiskString'] = format_risk_string(risk_string)
             indicators.append({
-                'value': value,
-                'type': raw_json['type'],
-                'rawJSON': raw_json,
-                'fields': {
-                    'recordedfutureevidencedetails': lower_case_evidence_details_keys,
-                    'tags': client.tags
-                },
-                'score': score
+                "value": value,
+                "type": raw_json['type'],
+                "rawJSON": raw_json,
+                "fields": {'recordedfutureevidencedetails': lower_case_evidence_details_keys},
+                "score": score
             })
 
     return indicators
@@ -362,7 +349,12 @@ def get_risk_rules_command(client: Client, args) -> Tuple[str, dict, dict]:
             str, dict, list. the markdown table, context JSON and list of risk rules
         """
     indicator_type = args.get('indicator_type', demisto.params().get('indicator_type'))
-    result = client.get_risk_rules(indicator_type)
+    result = client._http_request(
+        method='GET',
+        url_suffix=indicator_type + '/riskrules',
+        params=client.PARAMS,
+        headers=client.headers
+    )
     entry_result = []
     for entry in result['data']['results']:
         entry_result.append({
@@ -379,9 +371,7 @@ def main():
     params = demisto.params()
     client = Client(params.get('indicator_type'), params.get('api_token'), params.get('services'),
                     params.get('risk_rule'), params.get('fusion_file_path'), params.get('insecure'),
-                    params.get('polling_timeout'), params.get('proxy'), params.get('threshold'),
-                    argToList(params.get('feedTags'))
-                    )
+                    params.get('polling_timeout'), params.get('proxy'), params.get('threshold'))
     command = demisto.command()
     demisto.info('Command being called is {}'.format(command))
     # Switch case

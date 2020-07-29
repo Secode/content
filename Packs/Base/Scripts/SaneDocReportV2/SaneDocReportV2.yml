@@ -14,21 +14,9 @@ args:
   secret: false
 - default: false
   defaultValue: A4
-  description: The paper size for the report.
+  description: the paper size of the report
   isArray: false
   name: paperSize
-  required: false
-  secret: false
-- default: false
-  description: Custom logo image.
-  isArray: false
-  name: customerLogo
-  required: false
-  secret: false
-- default: false
-  description: The logo for XSOAR.
-  isArray: false
-  name: demistoLogo
   required: false
   secret: false
 comment: Parse Sane-json-reports and export them as docx files (used internally, thus deprecated).
@@ -46,7 +34,7 @@ tags:
 timeout: '0'
 type: python
 subtype: python3
-dockerimage: demisto/sane-doc-reports:1.0.0.10003
+dockerimage: demisto/sane-doc-reports:1.0.0.6861
 runas: DBotWeakRole
 runonce: false
 tests:

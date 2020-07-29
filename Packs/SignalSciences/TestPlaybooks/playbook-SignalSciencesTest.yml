@@ -5,10 +5,10 @@ starttaskid: "0"
 tasks:
   "0":
     id: "0"
-    taskid: 3e66b865-a6e4-4379-8d41-fcfe5bea4d84
+    taskid: 1d2f80f3-85f9-4b3f-8cf8-2b8adc48257c
     type: start
     task:
-      id: 3e66b865-a6e4-4379-8d41-fcfe5bea4d84
+      id: 1d2f80f3-85f9-4b3f-8cf8-2b8adc48257c
       version: -1
       name: ""
       iscommand: false
@@ -27,14 +27,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "3":
     id: "3"
-    taskid: 53db8d7a-cd14-45c9-8d56-5543af771844
+    taskid: 96cbb2d5-b208-4603-8e6d-b1555d062891
     type: regular
     task:
-      id: 53db8d7a-cd14-45c9-8d56-5543af771844
+      id: 96cbb2d5-b208-4603-8e6d-b1555d062891
       version: -1
       name: Add ip to blacklist
       script: '|||sigsci-blacklist-add-ip'
@@ -63,14 +61,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "4":
     id: "4"
-    taskid: 32a45e66-c07e-4149-8b7e-b0036cc09f0f
+    taskid: 073c4ea5-d025-4653-8570-158ec68bbcef
     type: regular
     task:
-      id: 32a45e66-c07e-4149-8b7e-b0036cc09f0f
+      id: 073c4ea5-d025-4653-8570-158ec68bbcef
       version: -1
       name: Get blacklist
       script: '|||sigsci-get-blacklist'
@@ -94,14 +90,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "5":
     id: "5"
-    taskid: dd529a0e-a522-4126-8961-ba4b75e07a89
+    taskid: a3cf1f99-1e26-4d88-8d1c-850095950aa2
     type: regular
     task:
-      id: dd529a0e-a522-4126-8961-ba4b75e07a89
+      id: a3cf1f99-1e26-4d88-8d1c-850095950aa2
       version: -1
       name: Remove IP from blacklist
       script: '|||sigsci-blacklist-remove-ip'
@@ -127,14 +121,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "6":
     id: "6"
-    taskid: 724835f6-ca7a-49f2-8911-1c54ad2584fb
+    taskid: c0dce699-eeff-4db5-850b-dd994cc49457
     type: regular
     task:
-      id: 724835f6-ca7a-49f2-8911-1c54ad2584fb
+      id: c0dce699-eeff-4db5-850b-dd994cc49457
       version: -1
       name: Add ip to whitelist
       script: '|||sigsci-whitelist-add-ip'
@@ -163,14 +155,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "7":
     id: "7"
-    taskid: 4bb2a80e-d007-445e-8432-5cb9ae22db1f
+    taskid: 4c78bd78-7b66-49bd-8909-f3acc667444b
     type: regular
     task:
-      id: 4bb2a80e-d007-445e-8432-5cb9ae22db1f
+      id: 4c78bd78-7b66-49bd-8909-f3acc667444b
       version: -1
       name: Get whitelist
       script: '|||sigsci-get-whitelist'
@@ -194,14 +184,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "8":
     id: "8"
-    taskid: 12b9c83d-5189-454e-8ff4-aa4e5044ca26
+    taskid: a71cd459-5cb0-421f-8b89-ea6ab4b1bbf6
     type: regular
     task:
-      id: 12b9c83d-5189-454e-8ff4-aa4e5044ca26
+      id: a71cd459-5cb0-421f-8b89-ea6ab4b1bbf6
       version: -1
       name: Remove IP from whitelist
       script: '|||sigsci-whitelist-remove-ip'
@@ -227,14 +215,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "9":
     id: "9"
-    taskid: 5db77826-38cc-4511-8150-2e00e8a3c1d8
+    taskid: c56b7d2c-f018-43ea-81bf-0d49890ef271
     type: regular
     task:
-      id: 5db77826-38cc-4511-8150-2e00e8a3c1d8
+      id: c56b7d2c-f018-43ea-81bf-0d49890ef271
       version: -1
       name: Delete Context
       scriptName: DeleteContext
@@ -265,14 +251,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "10":
     id: "10"
-    taskid: 75fa0e0c-fbb8-4b27-8fda-ea9792463510
+    taskid: 267f935b-ca8f-4fff-8987-2c89e2abace8
     type: regular
     task:
-      id: 75fa0e0c-fbb8-4b27-8fda-ea9792463510
+      id: 267f935b-ca8f-4fff-8987-2c89e2abace8
       version: -1
       name: Add alert
       script: '|||sigsci-add-alert'
@@ -308,14 +292,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "11":
     id: "11"
-    taskid: 500e5a1a-1386-46e0-8ab5-9effc4c9f508
+    taskid: be222519-6b88-4eba-8bfd-a4818cafc6f3
     type: regular
     task:
-      id: 500e5a1a-1386-46e0-8ab5-9effc4c9f508
+      id: be222519-6b88-4eba-8bfd-a4818cafc6f3
       version: -1
       name: Get alerts
       script: '|||sigsci-get-alert'
@@ -341,14 +323,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "12":
     id: "12"
-    taskid: c6496ba5-3f76-4a96-8b71-ea566dbcf2c0
+    taskid: a8f53a4c-f235-4252-8b7d-573fd7802418
     type: regular
     task:
-      id: c6496ba5-3f76-4a96-8b71-ea566dbcf2c0
+      id: a8f53a4c-f235-4252-8b7d-573fd7802418
       version: -1
       name: Update alert
       script: '|||sigsci-update-alert'
@@ -386,14 +366,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "13":
     id: "13"
-    taskid: 2ff2f0b8-be2a-4121-8ea8-8d11e7b6553a
+    taskid: f62af858-5cb5-4735-8318-1967f4863fac
     type: regular
     task:
-      id: 2ff2f0b8-be2a-4121-8ea8-8d11e7b6553a
+      id: f62af858-5cb5-4735-8318-1967f4863fac
       version: -1
       name: Get updated alert
       script: '|||sigsci-get-alert'
@@ -419,14 +397,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "14":
     id: "14"
-    taskid: ad306f49-310e-4acd-8fea-44f264b4ceb5
+    taskid: ae361f50-4d57-4e8a-8137-ef4a84047016
     type: condition
     task:
-      id: ad306f49-310e-4acd-8fea-44f264b4ceb5
+      id: ae361f50-4d57-4e8a-8137-ef4a84047016
       version: -1
       name: Verify alert has been updated
       type: condition
@@ -457,14 +433,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "15":
     id: "15"
-    taskid: 6e1ae0fb-3e2a-4fcf-8ec3-2282fc64d9d5
+    taskid: 9fff854d-617b-4f16-808e-b07146223ba6
     type: regular
     task:
-      id: 6e1ae0fb-3e2a-4fcf-8ec3-2282fc64d9d5
+      id: 9fff854d-617b-4f16-808e-b07146223ba6
       version: -1
       name: Delete alert
       script: '|||sigsci-delete-alert'
@@ -490,14 +464,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "16":
     id: "16"
-    taskid: 42c66e85-acd1-4de7-8ea7-d264f2af613f
+    taskid: a734afc5-a9ce-4a0a-8f91-37094568a673
     type: title
     task:
-      id: 42c66e85-acd1-4de7-8ea7-d264f2af613f
+      id: a734afc5-a9ce-4a0a-8f91-37094568a673
       version: -1
       name: Test blacklist and whitelist
       type: title
@@ -517,14 +489,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "17":
     id: "17"
-    taskid: 59da0653-953d-40ac-80a4-dd17fccb7654
+    taskid: 7e5c233d-03df-4fdf-8a28-0a11ffafd34c
     type: title
     task:
-      id: 59da0653-953d-40ac-80a4-dd17fccb7654
+      id: 7e5c233d-03df-4fdf-8a28-0a11ffafd34c
       version: -1
       name: Test alerts
       type: title
@@ -544,14 +514,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "18":
     id: "18"
-    taskid: 408289c9-83b2-473f-80e0-d963fdc1dc78
+    taskid: d67b59d6-b1dc-4e05-81bb-a0dba0324028
     type: title
     task:
-      id: 408289c9-83b2-473f-80e0-d963fdc1dc78
+      id: d67b59d6-b1dc-4e05-81bb-a0dba0324028
       version: -1
       name: Test lists
       type: title
@@ -571,14 +539,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "19":
     id: "19"
-    taskid: de0b84f5-0dc0-47bb-8142-075f65f28a36
+    taskid: b4758be9-adff-4397-859e-2e00dadee1f9
     type: regular
     task:
-      id: de0b84f5-0dc0-47bb-8142-075f65f28a36
+      id: b4758be9-adff-4397-859e-2e00dadee1f9
       version: -1
       name: Create site list
       script: '|||sigsci-create-site-list'
@@ -609,14 +575,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "20":
     id: "20"
-    taskid: 09c49f17-f953-4707-8131-f4363a822070
+    taskid: 13851d07-c5be-4c60-849c-e18d3014f00f
     type: regular
     task:
-      id: 09c49f17-f953-4707-8131-f4363a822070
+      id: 13851d07-c5be-4c60-849c-e18d3014f00f
       version: -1
       name: Get site list
       script: '|||sigsci-get-site-list'
@@ -642,14 +606,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "21":
     id: "21"
-    taskid: dd970728-5470-4f18-8ce1-a582ce8c3525
+    taskid: 7e1732a3-cfe3-4feb-845e-19fbe7306fb5
     type: regular
     task:
-      id: dd970728-5470-4f18-8ce1-a582ce8c3525
+      id: 7e1732a3-cfe3-4feb-845e-19fbe7306fb5
       version: -1
       name: Update site list
       script: '|||sigsci-update-site-list'
@@ -688,14 +650,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "22":
     id: "22"
-    taskid: 21421526-1856-4ee8-8012-c77298e66a86
+    taskid: 651ac703-feda-48a2-84ff-fe1400636315
     type: condition
     task:
-      id: 21421526-1856-4ee8-8012-c77298e66a86
+      id: 651ac703-feda-48a2-84ff-fe1400636315
       version: -1
       name: Verify site list has been updated
       type: condition
@@ -726,14 +686,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "23":
     id: "23"
-    taskid: fb381d6a-cbf5-4a59-8025-a34e7c44f278
+    taskid: 4b17fb06-9253-4ed3-868a-78825d158e8e
     type: regular
     task:
-      id: fb381d6a-cbf5-4a59-8025-a34e7c44f278
+      id: 4b17fb06-9253-4ed3-868a-78825d158e8e
       version: -1
       name: Delete site list
       script: '|||sigsci-delete-site-list'
@@ -759,14 +717,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "24":
     id: "24"
-    taskid: 561b07ec-6cb0-4022-8470-93ac62886eae
+    taskid: be4e6256-5f6f-40b2-82ad-e2cfc1307d62
     type: regular
     task:
-      id: 561b07ec-6cb0-4022-8470-93ac62886eae
+      id: be4e6256-5f6f-40b2-82ad-e2cfc1307d62
       version: -1
       name: Get all alerts
       script: '|||sigsci-get-all-alerts'
@@ -790,14 +746,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "25":
     id: "25"
-    taskid: 1923cb34-5a27-4158-8cac-4fc724fc3a0c
+    taskid: 64e9d7e1-3e7d-45a3-846c-0f7afbedd326
     type: condition
     task:
-      id: 1923cb34-5a27-4158-8cac-4fc724fc3a0c
+      id: 64e9d7e1-3e7d-45a3-846c-0f7afbedd326
       version: -1
       name: Verify alert was deleted
       type: condition
@@ -828,14 +782,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "26":
     id: "26"
-    taskid: a9062e4c-ae3b-447a-867c-2403a2b5a07b
+    taskid: fd93a15c-38a0-40ca-88d5-0ba0a16c210f
     type: regular
     task:
-      id: a9062e4c-ae3b-447a-867c-2403a2b5a07b
+      id: fd93a15c-38a0-40ca-88d5-0ba0a16c210f
       version: -1
       name: Delete Context
       scriptName: DeleteContext
@@ -864,14 +816,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "27":
     id: "27"
-    taskid: bcadaf39-b37e-4e12-83a1-9b735099267c
+    taskid: 77a38ec6-13df-49f2-8e27-2ee1cce69448
     type: title
     task:
-      id: bcadaf39-b37e-4e12-83a1-9b735099267c
+      id: 77a38ec6-13df-49f2-8e27-2ee1cce69448
       version: -1
       name: Success
       type: title
@@ -888,14 +838,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "28":
     id: "28"
-    taskid: 93bc3ed4-c831-45da-8102-01daf401c767
+    taskid: ebae7695-6597-4f3e-8d6b-c250c0acf366
     type: regular
     task:
-      id: 93bc3ed4-c831-45da-8102-01daf401c767
+      id: ebae7695-6597-4f3e-8d6b-c250c0acf366
       version: -1
       name: Delete Context
       scriptName: DeleteContext
@@ -924,14 +872,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "29":
     id: "29"
-    taskid: 124db72b-46f3-47af-8d25-32bfdd76cf2b
+    taskid: 954d7cf5-11b1-4693-8575-483bb3d1366e
     type: regular
     task:
-      id: 124db72b-46f3-47af-8d25-32bfdd76cf2b
+      id: 954d7cf5-11b1-4693-8575-483bb3d1366e
       version: -1
       name: Get all site lists
       script: '|||sigsci-get-all-site-lists'
@@ -955,14 +901,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "30":
     id: "30"
-    taskid: 58324e4c-74ff-4fcf-8b39-9f2532dbd6fb
+    taskid: 1452c4d3-3e23-44c7-87a7-cf036be8d6f4
     type: condition
     task:
-      id: 58324e4c-74ff-4fcf-8b39-9f2532dbd6fb
+      id: 1452c4d3-3e23-44c7-87a7-cf036be8d6f4
       version: -1
       name: Verify site list was deleted
       type: condition
@@ -990,14 +934,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "31":
     id: "31"
-    taskid: e1383552-007e-45b5-8dd3-7c4a656be4f7
+    taskid: 3a0369c9-b6b8-41aa-8265-53270ada650c
     type: title
     task:
-      id: e1383552-007e-45b5-8dd3-7c4a656be4f7
+      id: 3a0369c9-b6b8-41aa-8265-53270ada650c
       version: -1
       name: Test site lists
       type: title
@@ -1017,14 +959,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "32":
     id: "32"
-    taskid: 7840ac66-30c9-43f3-8b21-2969f272fa06
+    taskid: 07bcfc53-8ccf-4740-8a7c-f9156683efa2
     type: title
     task:
-      id: 7840ac66-30c9-43f3-8b21-2969f272fa06
+      id: 07bcfc53-8ccf-4740-8a7c-f9156683efa2
       version: -1
       name: Test corp lists
       type: title
@@ -1044,14 +984,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "33":
     id: "33"
-    taskid: e4638616-b7bf-4fba-8756-5c6823552c19
+    taskid: ce01c41f-e1cf-459b-8b91-dbcf2fa9a799
     type: regular
     task:
-      id: e4638616-b7bf-4fba-8756-5c6823552c19
+      id: ce01c41f-e1cf-459b-8b91-dbcf2fa9a799
       version: -1
       name: Create corp list
       script: '|||sigsci-create-corp-list'
@@ -1081,14 +1019,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "34":
     id: "34"
-    taskid: e3a7f3fe-c844-4aa1-8ef9-d7204056bf58
+    taskid: cac10778-5cb9-4e6e-8490-fdb4c9062154
     type: regular
     task:
-      id: e3a7f3fe-c844-4aa1-8ef9-d7204056bf58
+      id: cac10778-5cb9-4e6e-8490-fdb4c9062154
       version: -1
       name: Get corp list
       script: '|||sigsci-get-corp-list'
@@ -1112,14 +1048,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "35":
     id: "35"
-    taskid: 37031f13-0c60-4e36-89bd-6c410f00f959
+    taskid: ae084c1f-32aa-47e4-803e-3d75c18c80bf
     type: regular
     task:
-      id: 37031f13-0c60-4e36-89bd-6c410f00f959
+      id: ae084c1f-32aa-47e4-803e-3d75c18c80bf
       version: -1
       name: Update corp list
       script: '|||sigsci-update-corp-list'
@@ -1148,14 +1082,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "38":
     id: "38"
-    taskid: 7707d5a8-6124-4c1d-872d-315eacd86915
+    taskid: 26905d9c-ca04-4f80-8354-daded81dd32a
     type: condition
     task:
-      id: 7707d5a8-6124-4c1d-872d-315eacd86915
+      id: 26905d9c-ca04-4f80-8354-daded81dd32a
       version: -1
       name: Verify site list has been updated
       type: condition
@@ -1186,14 +1118,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "39":
     id: "39"
-    taskid: b2724791-6b16-4ca1-88f8-93d48c4e2c61
+    taskid: 43573046-bcb6-4bda-836b-ee36075514c5
     type: regular
     task:
-      id: b2724791-6b16-4ca1-88f8-93d48c4e2c61
+      id: 43573046-bcb6-4bda-836b-ee36075514c5
       version: -1
       name: Delete corp list
       script: '|||sigsci-delete-corp-list'
@@ -1217,14 +1147,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "40":
     id: "40"
-    taskid: 336712d8-05ae-44a8-8188-7351a02ab859
+    taskid: 7b837bea-5a23-4afd-86d1-ac3b5e8cf3ae
     type: regular
     task:
-      id: 336712d8-05ae-44a8-8188-7351a02ab859
+      id: 7b837bea-5a23-4afd-86d1-ac3b5e8cf3ae
       version: -1
       name: Delete context
       scriptName: DeleteContext
@@ -1253,14 +1181,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "41":
     id: "41"
-    taskid: 500a6a40-2f4e-4630-8d08-0c5cde4514fe
+    taskid: 8a694522-3b65-4235-86de-bbfc712c76a6
     type: regular
     task:
-      id: 500a6a40-2f4e-4630-8d08-0c5cde4514fe
+      id: 8a694522-3b65-4235-86de-bbfc712c76a6
       version: -1
       name: Get all corp lists
       script: '|||sigsci-get-all-corp-lists'
@@ -1281,14 +1207,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "42":
     id: "42"
-    taskid: e2cf056a-27cf-4ae3-8857-f2ff97311520
+    taskid: 8db7a6a9-6094-405c-89fd-d59e38400fb6
     type: condition
     task:
-      id: e2cf056a-27cf-4ae3-8857-f2ff97311520
+      id: 8db7a6a9-6094-405c-89fd-d59e38400fb6
       version: -1
       name: Verify corp list has been deleted
       type: condition
@@ -1316,14 +1240,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "43":
     id: "43"
-    taskid: 81c26479-6134-4e63-8e69-9ba7bcb31696
+    taskid: 2bac0cab-8e28-4bcc-8b16-03d3a5aac958
     type: title
     task:
-      id: 81c26479-6134-4e63-8e69-9ba7bcb31696
+      id: 2bac0cab-8e28-4bcc-8b16-03d3a5aac958
       version: -1
       name: Success
       type: title
@@ -1340,14 +1262,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "44":
     id: "44"
-    taskid: 9f7228db-e8eb-4335-847e-b74e92528ede
+    taskid: 72e3b167-fe02-4695-8445-0d7f834becfb
     type: title
     task:
-      id: 9f7228db-e8eb-4335-847e-b74e92528ede
+      id: 72e3b167-fe02-4695-8445-0d7f834becfb
       version: -1
       name: Test requests / events
       type: title
@@ -1367,14 +1287,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "45":
     id: "45"
-    taskid: f72f75c0-36c0-4325-82c6-32180a00f40b
+    taskid: 161a7f61-faaa-4f27-817d-43a80fcd95f4
     type: title
     task:
-      id: f72f75c0-36c0-4325-82c6-32180a00f40b
+      id: 161a7f61-faaa-4f27-817d-43a80fcd95f4
       version: -1
       name: Test requests
       type: title
@@ -1394,14 +1312,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "46":
     id: "46"
-    taskid: 76f666bd-a21a-47dd-8622-a95572cd3d1b
+    taskid: f96dc120-6b8d-43d4-8a79-dc70b00aab9d
     type: regular
     task:
-      id: 76f666bd-a21a-47dd-8622-a95572cd3d1b
+      id: f96dc120-6b8d-43d4-8a79-dc70b00aab9d
       version: -1
       name: Get requests
       script: '|||sigsci-get-requests'
@@ -1430,20 +1346,21 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "47":
     id: "47"
-    taskid: b9f9362f-a464-41e8-82b3-99fcb8d1c8d4
+    taskid: 27197674-b061-45b8-8d07-7f3564e307ec
     type: regular
     task:
-      id: b9f9362f-a464-41e8-82b3-99fcb8d1c8d4
+      id: 27197674-b061-45b8-8d07-7f3564e307ec
       version: -1
       name: Get request by ID
       script: '|||sigsci-get-request-by-id'
       type: regular
       iscommand: true
       brand: ""
+    nexttasks:
+      '#none#':
+      - "48"
     scriptarguments:
       request_id:
         simple: 5c82c5d0b62acc0007d8eb03
@@ -1460,14 +1377,105 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
+  "48":
+    id: "48"
+    taskid: 986d014b-70ad-4d75-84aa-7198fc291858
+    type: title
+    task:
+      id: 986d014b-70ad-4d75-84aa-7198fc291858
+      version: -1
+      name: Test events
+      type: title
+      iscommand: false
+      brand: ""
+    nexttasks:
+      '#none#':
+      - "49"
+    separatecontext: false
+    view: |-
+      {
+        "position": {
+          "x": 1770,
+          "y": 1275
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+  "49":
+    id: "49"
+    taskid: bdbd1225-72b6-4b56-8bc7-bd5e03c7cfcb
+    type: regular
+    task:
+      id: bdbd1225-72b6-4b56-8bc7-bd5e03c7cfcb
+      version: -1
+      name: Get events
+      script: '|||sigsci-get-events'
+      type: regular
+      iscommand: true
+      brand: ""
+    nexttasks:
+      '#none#':
+      - "51"
+    scriptarguments:
+      action: {}
+      from_time: {}
+      ip: {}
+      limit: {}
+      max_id: {}
+      page: {}
+      since_id: {}
+      siteName:
+        simple: demisto
+      sort: {}
+      status: {}
+      tag: {}
+      until_time: {}
+    separatecontext: false
+    view: |-
+      {
+        "position": {
+          "x": 1770,
+          "y": 1440
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+  "51":
+    id: "51"
+    taskid: 0abe8fb3-2872-4e64-80b2-e95a76019e3c
+    type: regular
+    task:
+      id: 0abe8fb3-2872-4e64-80b2-e95a76019e3c
+      version: -1
+      name: Get event by ID
+      script: '|||sigsci-get-event-by-id'
+      type: regular
+      iscommand: true
+      brand: ""
+    scriptarguments:
+      event_id:
+        simple: 5c82c52ec9a3db111b430b98
+      siteName:
+        simple: demisto
+    separatecontext: false
+    view: |-
+      {
+        "position": {
+          "x": 1770,
+          "y": 1675
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
   "52":
     id: "52"
-    taskid: 3800c74e-b1b3-4b7b-8797-49e7572fb852
+    taskid: 27f57db4-22fe-44a2-8b16-17a752dc7173
     type: condition
     task:
-      id: 3800c74e-b1b3-4b7b-8797-49e7572fb852
+      id: 27f57db4-22fe-44a2-8b16-17a752dc7173
       version: -1
       name: Verify IP was added to blacklist
       type: condition
@@ -1498,14 +1506,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "53":
     id: "53"
-    taskid: c8dc6a41-5dbe-4eeb-84a2-624efefd0f00
+    taskid: c7a403be-bc05-4ad6-8f54-4ed73aa5099c
     type: regular
     task:
-      id: c8dc6a41-5dbe-4eeb-84a2-624efefd0f00
+      id: c7a403be-bc05-4ad6-8f54-4ed73aa5099c
       version: -1
       name: Get blacklist
       script: '|||sigsci-get-blacklist'
@@ -1529,14 +1535,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "54":
     id: "54"
-    taskid: f8dec5a0-b3f1-430e-8c12-488dab708652
+    taskid: fc1e6f36-214e-48ae-8661-68f1937c32c1
     type: regular
     task:
-      id: f8dec5a0-b3f1-430e-8c12-488dab708652
+      id: fc1e6f36-214e-48ae-8661-68f1937c32c1
       version: -1
       name: Delete Context
       scriptName: DeleteContext
@@ -1565,14 +1569,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "55":
     id: "55"
-    taskid: 0f0242ae-018b-4dac-866c-13f4fc701ca8
+    taskid: 20cecdc3-8803-4322-8ce2-74bb91939d95
     type: condition
     task:
-      id: 0f0242ae-018b-4dac-866c-13f4fc701ca8
+      id: 20cecdc3-8803-4322-8ce2-74bb91939d95
       version: -1
       name: Verify IP was deleted from blacklist (blacklist is empty)
       type: condition
@@ -1600,14 +1602,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "57":
     id: "57"
-    taskid: 2a2a7b4b-4fb2-4865-8ac8-859dfc77533f
+    taskid: 7f87a1a4-c516-491d-8716-8c9e1f6fbee2
     type: regular
     task:
-      id: 2a2a7b4b-4fb2-4865-8ac8-859dfc77533f
+      id: 7f87a1a4-c516-491d-8716-8c9e1f6fbee2
       version: -1
       name: Delete Context
       scriptName: DeleteContext
@@ -1636,14 +1636,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "59":
     id: "59"
-    taskid: 13bd8912-62e8-42c8-8430-80aacd976a22
+    taskid: abb082ce-ecb8-4e87-8395-5408353fb369
     type: regular
     task:
-      id: 13bd8912-62e8-42c8-8430-80aacd976a22
+      id: abb082ce-ecb8-4e87-8395-5408353fb369
       version: -1
       name: Get whitelist
       script: '|||sigsci-get-whitelist'
@@ -1667,14 +1665,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "60":
     id: "60"
-    taskid: 1435e9be-e363-4875-8b1d-9d1a0241ff03
+    taskid: 5fbf77bc-c2c5-4276-8c8a-7a6db121db1c
     type: title
     task:
-      id: 1435e9be-e363-4875-8b1d-9d1a0241ff03
+      id: 5fbf77bc-c2c5-4276-8c8a-7a6db121db1c
       version: -1
       name: Success
       type: title
@@ -1691,14 +1687,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "62":
     id: "62"
-    taskid: 20bdfb5b-1116-4f9d-8743-c7011c96d402
+    taskid: 72338095-22dc-4a17-8782-47d7268764ca
     type: condition
     task:
-      id: 20bdfb5b-1116-4f9d-8743-c7011c96d402
+      id: 72338095-22dc-4a17-8782-47d7268764ca
       version: -1
       name: Verify IP was deleted from whitelist (whitelist is empty)
       type: condition
@@ -1726,14 +1720,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "63":
     id: "63"
-    taskid: d5f043c9-71cc-46eb-88a7-31a3bb4b08ef
+    taskid: d8e85172-5a4e-4ec3-833d-6b9511deb22e
     type: condition
     task:
-      id: d5f043c9-71cc-46eb-88a7-31a3bb4b08ef
+      id: d8e85172-5a4e-4ec3-833d-6b9511deb22e
       version: -1
       name: Verify IP was added to whitelist
       type: condition
@@ -1764,14 +1756,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "64":
     id: "64"
-    taskid: ca26e6a9-2ab0-4c3f-8d43-8038d6a35a4f
+    taskid: dedc880d-1709-4ad1-8479-f88dc99a83bc
     type: regular
     task:
-      id: ca26e6a9-2ab0-4c3f-8d43-8038d6a35a4f
+      id: dedc880d-1709-4ad1-8479-f88dc99a83bc
       version: -1
       name: Get all site lists
       script: '|||sigsci-get-all-site-lists'
@@ -1795,14 +1785,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "65":
     id: "65"
-    taskid: 0e324b22-5c72-4f95-8933-f5c5e057a833
+    taskid: e9b877a6-96c2-4531-84c5-560277f4713e
     type: regular
     task:
-      id: 0e324b22-5c72-4f95-8933-f5c5e057a833
+      id: e9b877a6-96c2-4531-84c5-560277f4713e
       version: -1
       name: Delete all site lists
       description: Deletes a site list in Signal Sciences.
@@ -1829,14 +1817,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "66":
     id: "66"
-    taskid: 899acc0f-122a-4831-8c41-8285815bd0f8
+    taskid: 948f4f29-175a-4175-8361-dcc7956e98da
     type: regular
     task:
-      id: 899acc0f-122a-4831-8c41-8285815bd0f8
+      id: 948f4f29-175a-4175-8361-dcc7956e98da
       version: -1
       name: Delete Context
       scriptName: DeleteContext
@@ -1865,14 +1851,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "67":
     id: "67"
-    taskid: f8c3178f-5133-4df9-8e34-fd4145f3852a
+    taskid: 59643356-d0ba-4b02-82bf-996d69e372e2
     type: regular
     task:
-      id: f8c3178f-5133-4df9-8e34-fd4145f3852a
+      id: 59643356-d0ba-4b02-82bf-996d69e372e2
       version: -1
       name: Get all corp lists
       script: '|||sigsci-get-all-corp-lists'
@@ -1893,14 +1877,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "68":
     id: "68"
-    taskid: 1659df0a-3ef8-46b8-837f-2cec03acbcf7
+    taskid: 82c98ecb-e9be-4f33-8a13-5371fdafba63
     type: regular
     task:
-      id: 1659df0a-3ef8-46b8-837f-2cec03acbcf7
+      id: 82c98ecb-e9be-4f33-8a13-5371fdafba63
       version: -1
       name: Delete corp list
       script: '|||sigsci-delete-corp-list'
@@ -1924,14 +1906,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "69":
     id: "69"
-    taskid: 6d9bb448-9f3d-41c1-8294-08b6cd296806
+    taskid: 8eab4d01-9d6e-4b3a-832c-f265557e86e4
     type: regular
     task:
-      id: 6d9bb448-9f3d-41c1-8294-08b6cd296806
+      id: 8eab4d01-9d6e-4b3a-832c-f265557e86e4
       version: -1
       name: Delete context
       scriptName: DeleteContext
@@ -1960,14 +1940,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "70":
     id: "70"
-    taskid: f1e70021-6ac4-4752-8939-8404e86677b1
+    taskid: 90cb1a0c-9d04-44a5-81c6-0b06f3263a16
     type: condition
     task:
-      id: f1e70021-6ac4-4752-8939-8404e86677b1
+      id: 90cb1a0c-9d04-44a5-81c6-0b06f3263a16
       version: -1
       name: Check if any site list exists in site
       type: condition
@@ -1997,14 +1975,12 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "71":
     id: "71"
-    taskid: b6dadb5c-1400-44ee-89d9-fa7921282801
+    taskid: b7b09482-b872-4717-8bc2-2b745ade4fa9
     type: condition
     task:
-      id: b6dadb5c-1400-44ee-89d9-fa7921282801
+      id: b7b09482-b872-4717-8bc2-2b745ade4fa9
       version: -1
       name: Does any corp list exist
       type: condition
@@ -2034,8 +2010,6 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
 view: |-
   {
     "linkLabelsPosition": {},

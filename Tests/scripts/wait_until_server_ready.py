@@ -36,7 +36,6 @@ def exit_if_timed_out(loop_start_time, current_time):
 
 def main():
     global SETUP_TIMEOUT
-    instance_name_to_wait_on = sys.argv[1]
     ready_ami_list = []
     failure = False
     with open('./Tests/instance_ips.txt', 'r') as instance_file:
@@ -45,8 +44,7 @@ def main():
 
     loop_start_time = time.time()
     last_update_time = loop_start_time
-    instance_ips_to_poll = [ami_instance_ip for ami_instance_name, ami_instance_ip in instance_ips if
-                            ami_instance_name == instance_name_to_wait_on]
+    instance_ips_to_poll = [ami_instance_ip for ami_instance_name, ami_instance_ip in instance_ips]
 
     print(f'[{datetime.datetime.now()}] Starting wait loop')
     while instance_ips_to_poll:

@@ -10,7 +10,9 @@
     "categories": [
         "Endpoint"
     ],
-    "tags": [],
+    "tags": [
+        "Trend Micro Apex"
+    ],
     "useCases": [],
     "keywords": []
 }

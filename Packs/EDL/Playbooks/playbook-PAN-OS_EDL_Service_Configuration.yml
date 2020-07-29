@@ -1,27 +1,27 @@
 id: PAN-OS EDL Service Configuration
 version: -1
+fromversion: 5.5.0
 name: PAN-OS EDL Service Configuration
-description: "This single-run playbook enables Cortex XSOAR's built-in External Dynamic\
-  \ List (EDL) as a service for system indicators, and configures PAN-OS EDL Objects\
+description: "This single-run playbook enables Cortex XSOAR built-in External Dynamic\
+  \ List (EDL) as a service for the system indicators, configures PAN-OS EDL Objects\
   \ and the respective firewall policy rules.\nThe EDLs will continuously update for\
-  \ each indicator that matches the query syntax input in the playbook \n(to validate to which indicators the query applied, 
-  \ you need to enter the query syntax from the indicator tab at the top of the playbook inputs window as well).\
-  \ \nIf both the IP and URL indicator types exist in the query, it sorts the indicators\
-  \ into two EDLs, IP and URL. If only one indicator type exists in the query, only\
-  \ one EDL is created. \nThe playbook then creates EDL objects directing to the indicator\
-  \ lists and firewall policy rules in PAN-OS. \n- It is recommended to configure\
-  \ a dedicated EDL Service instance for the usage of this playbook.\n- If necessary\
-  \ to edit or update the EDL query after this playbook run, use the panorama-edit-edl\
-  \ command and panorama integration to update the URL containing the indicator query\
-  \ syntax."
+  \ each indicator that matches the query syntax inputted in the playbook\n(in\
+  \ order to validate to which indicators the query applied, you need to enter the\
+  \ query syntax from the indicator tab at the top of the playbook inputs window\
+  \ as well). \nIf both the IP and URL indicator types exist in the query, it sorts the indicators into two EDLs, IP and URL.
+    If only one indicator type exists in the query, only one EDL is created. \nThe playbook then creates
+    EDL objects directing to the indicator lists and firewall policy rules in PAN-OS. \n- It is recommended to configure a dedicated\
+  \ EDL Service instance for the usage of this playbook.\n- In case it is needed to\
+  \ edit or update the EDL query after this playbook run, use the panorama-edit-edl\
+  \ command and panorama integration to update the URL containing the indicator query syntax."
 starttaskid: "0"
 tasks:
   "0":
     id: "0"
-    taskid: 5cf1df18-707a-42f6-8b05-aab67e0e42b8
+    taskid: 1b682425-c513-4f28-8a41-2cb8b3c0afd5
     type: start
     task:
-      id: 5cf1df18-707a-42f6-8b05-aab67e0e42b8
+      id: 1b682425-c513-4f28-8a41-2cb8b3c0afd5
       version: -1
       name: ""
       iscommand: false
@@ -45,10 +45,10 @@ tasks:
     quietmode: 0
   "1":
     id: "1"
-    taskid: 3ae1275a-e328-49d1-8b4c-b4c3856c8fe7
+    taskid: d225b5ca-c47c-4fcc-802d-fb88c08fe61e
     type: condition
     task:
-      id: 3ae1275a-e328-49d1-8b4c-b4c3856c8fe7
+      id: d225b5ca-c47c-4fcc-802d-fb88c08fe61e
       version: -1
       name: Is PAN-OS integration enabled?
       description: Checks if there is an active instance of the PAN-OS integration
@@ -103,10 +103,10 @@ tasks:
     quietmode: 0
   "3":
     id: "3"
-    taskid: ed0942c8-bbc8-42a3-8c9e-e299fb7233f3
+    taskid: 85de3a95-5cb1-4f9c-8282-1376af59f4d1
     type: title
     task:
-      id: ed0942c8-bbc8-42a3-8c9e-e299fb7233f3
+      id: 85de3a95-5cb1-4f9c-8282-1376af59f4d1
       version: -1
       name: Completed
       type: title
@@ -121,7 +121,7 @@ tasks:
       {
         "position": {
           "x": 0,
-          "y": 5280
+          "y": 4770
         }
       }
     note: false
@@ -131,10 +131,10 @@ tasks:
     quietmode: 0
   "23":
     id: "23"
-    taskid: 8fef8d74-d4fa-4610-8624-6d9b7a780ee6
+    taskid: 886c21d7-c049-4550-8298-5e4fa16c359f
     type: condition
     task:
-      id: 8fef8d74-d4fa-4610-8624-6d9b7a780ee6
+      id: 886c21d7-c049-4550-8298-5e4fa16c359f
       version: -1
       name: Is auto-commit defined?
       description: Checks if the values provided in the arguments are equal. If either
@@ -161,7 +161,7 @@ tasks:
       {
         "position": {
           "x": 700,
-          "y": 4375
+          "y": 3865
         }
       }
     note: false
@@ -171,10 +171,10 @@ tasks:
     quietmode: 0
   "27":
     id: "27"
-    taskid: 1c9d173a-5a6a-4a2e-8f47-7f503b72c3dd
+    taskid: c495d2b9-86a2-4b91-8a0e-fb612ed666b1
     type: regular
     task:
-      id: 1c9d173a-5a6a-4a2e-8f47-7f503b72c3dd
+      id: c495d2b9-86a2-4b91-8a0e-fb612ed666b1
       version: -1
       name: Manually commit
       description: Allows the analyst to manually commit the changes. This option
@@ -190,7 +190,7 @@ tasks:
       {
         "position": {
           "x": 930,
-          "y": 4550
+          "y": 4040
         }
       }
     note: false
@@ -200,12 +200,12 @@ tasks:
     quietmode: 0
   "41":
     id: "41"
-    taskid: 3f78b052-b9d6-44f9-8fd8-c5813d570df0
+    taskid: 00a32d49-6ed6-4d0e-81f2-d7890af49871
     type: playbook
     task:
-      id: 3f78b052-b9d6-44f9-8fd8-c5813d570df0
+      id: 00a32d49-6ed6-4d0e-81f2-d7890af49871
       version: -1
-      name: PAN-OS - Create Or Edit EDL Rule
+      name: 'PAN-OS - Create Or Edit EDL Rule'
       description: Creates or edits a Panorama rule and moves it into the desired
         position
       playbookName: PAN-OS - Create Or Edit EDL Rule
@@ -252,7 +252,7 @@ tasks:
       {
         "position": {
           "x": 460,
-          "y": 4075
+          "y": 3565
         }
       }
     note: false
@@ -262,10 +262,10 @@ tasks:
     quietmode: 0
   "42":
     id: "42"
-    taskid: 9fee0674-78e4-4e41-8227-3839ecd9d570
+    taskid: ada7fe20-0279-4f45-8fa4-44e513eb94fe
     type: condition
     task:
-      id: 9fee0674-78e4-4e41-8227-3839ecd9d570
+      id: ada7fe20-0279-4f45-8fa4-44e513eb94fe
       version: -1
       name: Is auto-commit defined?
       description: Checks if the values provided in the arguments are equal. If either
@@ -302,10 +302,10 @@ tasks:
     quietmode: 0
   "44":
     id: "44"
-    taskid: 522be804-30c9-423b-8621-f1480ca45f21
+    taskid: e10ce10d-d4a7-49bb-8ea0-fc63397cb5f9
     type: regular
     task:
-      id: 522be804-30c9-423b-8621-f1480ca45f21
+      id: e10ce10d-d4a7-49bb-8ea0-fc63397cb5f9
       version: -1
       name: Manually commit
       description: Allows the analyst to manually commit the changes. This option
@@ -331,10 +331,10 @@ tasks:
     quietmode: 0
   "48":
     id: "48"
-    taskid: 907638a8-7ff6-4ce9-870e-d6aa34173353
+    taskid: e69ad979-24d9-41a9-892e-a8c306f212dc
     type: condition
     task:
-      id: 907638a8-7ff6-4ce9-870e-d6aa34173353
+      id: e69ad979-24d9-41a9-892e-a8c306f212dc
       version: -1
       name: Is PAN-OS EDL Service integration enabled?
       description: Checks if there is an active instance of the PAN-OS EDL Management
@@ -390,10 +390,10 @@ tasks:
     quietmode: 0
   "50":
     id: "50"
-    taskid: f3930403-3082-4fe5-8d5e-a43fb7be3fbc
+    taskid: af3bcc7b-9c08-4c3d-8182-0c1db03cd4c6
     type: regular
     task:
-      id: f3930403-3082-4fe5-8d5e-a43fb7be3fbc
+      id: af3bcc7b-9c08-4c3d-8182-0c1db03cd4c6
       version: -1
       name: Get IP EDL Object from Panorama
       description: Returns information for an external dynamic list
@@ -424,10 +424,10 @@ tasks:
     quietmode: 0
   "51":
     id: "51"
-    taskid: 29dacc98-46c6-48d1-8f84-3b9acc71cc11
+    taskid: c5447010-e26d-43a0-803f-d319ce0a4b90
     type: condition
     task:
-      id: 29dacc98-46c6-48d1-8f84-3b9acc71cc11
+      id: c5447010-e26d-43a0-803f-d319ce0a4b90
       version: -1
       name: Is there an existing IP EDL object?
       description: Checks if an external file exists on the web server.
@@ -467,10 +467,10 @@ tasks:
     quietmode: 0
   "52":
     id: "52"
-    taskid: 8061fbe2-5725-4966-8947-83c3c7431295
+    taskid: a1ae7eaf-1b8a-417e-8f98-e023ec745bb9
     type: regular
     task:
-      id: 8061fbe2-5725-4966-8947-83c3c7431295
+      id: a1ae7eaf-1b8a-417e-8f98-e023ec745bb9
       version: -1
       name: Create IP EDL Object access by instance name
       description: Creates an external dynamic list in PAN-OS and connects it to the
@@ -512,10 +512,10 @@ tasks:
     quietmode: 0
   "61":
     id: "61"
-    taskid: 396052c1-a821-4c77-8546-7c8ff69e3f67
+    taskid: 31b3737c-2590-4b60-84a4-98d828e52c96
     type: regular
     task:
-      id: 396052c1-a821-4c77-8546-7c8ff69e3f67
+      id: 31b3737c-2590-4b60-84a4-98d828e52c96
       version: -1
       name: Create URL EDL Object access by instance name
       description: Creates an external dynamic list in PAN-OS and connects it to the
@@ -557,10 +557,10 @@ tasks:
     quietmode: 0
   "62":
     id: "62"
-    taskid: 4e5e157e-4783-4a95-8e48-05639e208069
+    taskid: 1f49f3ce-cd77-4c93-86ce-d0d5699b4a52
     type: title
     task:
-      id: 4e5e157e-4783-4a95-8e48-05639e208069
+      id: 1f49f3ce-cd77-4c93-86ce-d0d5699b4a52
       version: -1
       name: 'IP EDL Verification '
       type: title
@@ -585,10 +585,10 @@ tasks:
     quietmode: 0
   "64":
     id: "64"
-    taskid: ea4e3eca-272c-4a07-8604-2fdd8221b6b6
+    taskid: 8a3d5fc2-3a3c-4352-8585-3975659652cb
     type: title
     task:
-      id: ea4e3eca-272c-4a07-8604-2fdd8221b6b6
+      id: 8a3d5fc2-3a3c-4352-8585-3975659652cb
       version: -1
       name: Create IP EDL Objects
       type: title
@@ -613,10 +613,10 @@ tasks:
     quietmode: 0
   "65":
     id: "65"
-    taskid: ae34c3c5-8a24-4e47-8279-24dd173a71e6
+    taskid: 286d9f48-5c61-4e48-8b2e-01536213fa27
     type: title
     task:
-      id: ae34c3c5-8a24-4e47-8279-24dd173a71e6
+      id: 286d9f48-5c61-4e48-8b2e-01536213fa27
       version: -1
       name: Commit EDL Objects
       type: title
@@ -641,10 +641,10 @@ tasks:
     quietmode: 0
   "66":
     id: "66"
-    taskid: cf9a45da-5b6a-49f2-881f-1f4b34cab430
+    taskid: 4db2acc2-0759-45f3-84ac-201a1d21061a
     type: title
     task:
-      id: cf9a45da-5b6a-49f2-881f-1f4b34cab430
+      id: 4db2acc2-0759-45f3-84ac-201a1d21061a
       version: -1
       name: Commit EDL Rules
       type: title
@@ -659,7 +659,7 @@ tasks:
       {
         "position": {
           "x": 700,
-          "y": 4250
+          "y": 3740
         }
       }
     note: false
@@ -669,10 +669,10 @@ tasks:
     quietmode: 0
   "68":
     id: "68"
-    taskid: 93952f83-bf83-4ad4-81fa-d0ae77e4e2e7
+    taskid: a8afe99f-fdeb-4cd7-80d7-0f830728bd71
     type: title
     task:
-      id: 93952f83-bf83-4ad4-81fa-d0ae77e4e2e7
+      id: a8afe99f-fdeb-4cd7-80d7-0f830728bd71
       version: -1
       name: Validate Indicator query input
       type: title
@@ -698,10 +698,10 @@ tasks:
     quietmode: 0
   "73":
     id: "73"
-    taskid: 8bf75320-8ba9-4b07-8dbf-15a6ee07a6d2
+    taskid: 11b5715b-73a7-48fd-8e06-23fee1e2acdf
     type: title
     task:
-      id: 8bf75320-8ba9-4b07-8dbf-15a6ee07a6d2
+      id: 11b5715b-73a7-48fd-8e06-23fee1e2acdf
       version: -1
       name: Completed
       type: title
@@ -716,7 +716,7 @@ tasks:
       {
         "position": {
           "x": 1410,
-          "y": 5270
+          "y": 4760
         }
       }
     note: false
@@ -726,10 +726,10 @@ tasks:
     quietmode: 0
   "74":
     id: "74"
-    taskid: 4eb31ab7-4e64-4a0b-82b4-46d68ef36550
+    taskid: 27cbdb47-0100-4e71-8ef6-09dc17294b05
     type: regular
     task:
-      id: 4eb31ab7-4e64-4a0b-82b4-46d68ef36550
+      id: 27cbdb47-0100-4e71-8ef6-09dc17294b05
       version: -1
       name: Get URL EDL Object from Panorama
       description: Returns information for an external dynamic list
@@ -760,10 +760,10 @@ tasks:
     quietmode: 0
   "75":
     id: "75"
-    taskid: 9415f671-8a20-4c4e-892f-dcdd0b1c7d13
+    taskid: e9d686cf-daf3-4f54-885e-5f030a49f0fb
     type: condition
     task:
-      id: 9415f671-8a20-4c4e-892f-dcdd0b1c7d13
+      id: e9d686cf-daf3-4f54-885e-5f030a49f0fb
       version: -1
       name: Is there an existing URL EDL object?
       description: Checks if an external file exists on the web server.
@@ -803,12 +803,12 @@ tasks:
     quietmode: 0
   "76":
     id: "76"
-    taskid: 519ceda8-8848-4b6c-8917-b8ea35c72f77
+    taskid: ee144492-d9c8-46fa-8f96-72f19b1abaa4
     type: playbook
     task:
-      id: 519ceda8-8848-4b6c-8917-b8ea35c72f77
+      id: ee144492-d9c8-46fa-8f96-72f19b1abaa4
       version: -1
-      name: PAN-OS - Create Or Edit EDL Rule
+      name: 'PAN-OS - Create Or Edit EDL Rule'
       description: Creates or edits a Panorama rule and moves it into the desired
         position
       playbookName: PAN-OS - Create Or Edit EDL Rule
@@ -855,7 +855,7 @@ tasks:
       {
         "position": {
           "x": 930,
-          "y": 4075
+          "y": 3565
         }
       }
     note: false
@@ -865,10 +865,10 @@ tasks:
     quietmode: 0
   "77":
     id: "77"
-    taskid: d1d5fa0e-eaee-496e-86b5-d14f192153fb
+    taskid: e3e0c6f3-e9b7-4000-86cf-56b3998c1b5f
     type: title
     task:
-      id: d1d5fa0e-eaee-496e-86b5-d14f192153fb
+      id: e3e0c6f3-e9b7-4000-86cf-56b3998c1b5f
       version: -1
       name: Create EDL Rules
       type: title
@@ -877,7 +877,8 @@ tasks:
       description: ''
     nexttasks:
       '#none#':
-      - "101"
+      - "97"
+      - "98"
     separatecontext: false
     view: |-
       {
@@ -893,19 +894,17 @@ tasks:
     quietmode: 0
   "82":
     id: "82"
-    taskid: ad9b9e7c-12c0-4458-86b9-459b38df6fa8
+    taskid: 6141c4ef-aa88-4fea-8b7e-40fd26b3ae8c
     type: playbook
     task:
-      id: ad9b9e7c-12c0-4458-86b9-459b38df6fa8
+      id: 6141c4ef-aa88-4fea-8b7e-40fd26b3ae8c
       version: -1
       name: PAN-OS Commit Configuration
-      description: Commit the PAN-OS Panorama or Firewall configuration.\nIf specified
-        as Panorama, it also pushes the policies to the specified Device Group in
-        the instance.
       playbookName: PAN-OS Commit Configuration
       type: playbook
       iscommand: false
       brand: ""
+      description: ''
     nexttasks:
       '#none#':
       - "77"
@@ -924,19 +923,17 @@ tasks:
     quietmode: 0
   "83":
     id: "83"
-    taskid: a201aef2-cee4-4d5b-8b2e-88acf9144033
+    taskid: 1bfb7ae4-611f-451d-8605-75d1efcf586f
     type: playbook
     task:
-      id: a201aef2-cee4-4d5b-8b2e-88acf9144033
+      id: 1bfb7ae4-611f-451d-8605-75d1efcf586f
       version: -1
       name: PAN-OS Commit Configuration
-      description: Commit the PAN-OS Panorama or Firewall configuration.\nIf specified
-        as Panorama, it also pushes the policies to the specified Device Group in
-        the instance.
       playbookName: PAN-OS Commit Configuration
       type: playbook
       iscommand: false
       brand: ""
+      description: ''
     nexttasks:
       '#none#':
       - "99"
@@ -945,7 +942,7 @@ tasks:
       {
         "position": {
           "x": 460,
-          "y": 4550
+          "y": 4040
         }
       }
     note: false
@@ -955,16 +952,16 @@ tasks:
     quietmode: 0
   "84":
     id: "84"
-    taskid: d2c6ba27-fc83-4c77-8cd8-b5445e058a48
+    taskid: 24f99628-690c-4bd6-85c0-89429586dfc6
     type: condition
     task:
-      id: d2c6ba27-fc83-4c77-8cd8-b5445e058a48
+      id: 24f99628-690c-4bd6-85c0-89429586dfc6
       version: -1
       name: Verify access method to the EDL Service
-      description: ''''''
       type: condition
       iscommand: false
       brand: ""
+      description: ''
     nexttasks:
       Instance Name:
       - "52"
@@ -1002,10 +999,10 @@ tasks:
     quietmode: 0
   "85":
     id: "85"
-    taskid: f27860aa-3c23-4afe-8436-7aa6affcf125
+    taskid: 18f8d43a-39ab-42e4-8680-8bc3809bbb00
     type: regular
     task:
-      id: f27860aa-3c23-4afe-8436-7aa6affcf125
+      id: 18f8d43a-39ab-42e4-8680-8bc3809bbb00
       version: -1
       name: Create IP EDL Object access by port
       description: Creates an external dynamic list in PAN-OS and connects it to the
@@ -1047,10 +1044,10 @@ tasks:
     quietmode: 0
   "86":
     id: "86"
-    taskid: 5a2a0264-7ba9-4762-898e-67b862f7898b
+    taskid: 7ddbc1ad-6501-4600-8829-242a8e8f82ac
     type: regular
     task:
-      id: 5a2a0264-7ba9-4762-898e-67b862f7898b
+      id: 7ddbc1ad-6501-4600-8829-242a8e8f82ac
       version: -1
       name: Create URL EDL Object access by port
       description: Creates an external dynamic list in PAN-OS and connects it to the
@@ -1092,10 +1089,10 @@ tasks:
     quietmode: 0
   "87":
     id: "87"
-    taskid: c50ab09d-343b-40de-8075-413b0137991c
+    taskid: 97ced906-9fcb-4371-8ea8-ed40b15e70e1
     type: title
     task:
-      id: c50ab09d-343b-40de-8075-413b0137991c
+      id: 97ced906-9fcb-4371-8ea8-ed40b15e70e1
       version: -1
       name: Commit EDL Objects
       type: title
@@ -1120,10 +1117,10 @@ tasks:
     quietmode: 0
   "88":
     id: "88"
-    taskid: fd54d1e3-851e-4d8c-862f-5b338b79504d
+    taskid: a5b56217-b73e-41c0-8277-87ecd0859679
     type: title
     task:
-      id: fd54d1e3-851e-4d8c-862f-5b338b79504d
+      id: a5b56217-b73e-41c0-8277-87ecd0859679
       version: -1
       name: Commit EDL Objects
       type: title
@@ -1148,16 +1145,16 @@ tasks:
     quietmode: 0
   "89":
     id: "89"
-    taskid: e8bf6f0e-4d77-4eb8-8c9f-71da3fb162c1
+    taskid: 9fdd0418-983d-485a-856f-256e32969a4e
     type: condition
     task:
-      id: e8bf6f0e-4d77-4eb8-8c9f-71da3fb162c1
+      id: 9fdd0418-983d-485a-856f-256e32969a4e
       version: -1
       name: Verify access method to the EDL Service
-      description: ''''''
       type: condition
       iscommand: false
       brand: ""
+      description: ''
     nexttasks:
       Instance Name:
       - "61"
@@ -1195,10 +1192,10 @@ tasks:
     quietmode: 0
   "90":
     id: "90"
-    taskid: 33e32089-649b-4da7-831d-1c0b86ed0135
+    taskid: 9e6a10fa-d929-444e-8477-a24267b3cdd1
     type: title
     task:
-      id: 33e32089-649b-4da7-831d-1c0b86ed0135
+      id: 9e6a10fa-d929-444e-8477-a24267b3cdd1
       version: -1
       name: Create URL EDL Object
       type: title
@@ -1223,10 +1220,10 @@ tasks:
     quietmode: 0
   "91":
     id: "91"
-    taskid: 07e26436-d2ca-4c9d-8609-3be4092bf508
+    taskid: 7945b72d-b8f6-4bb9-840a-0c4d186d33f7
     type: title
     task:
-      id: 07e26436-d2ca-4c9d-8609-3be4092bf508
+      id: 7945b72d-b8f6-4bb9-840a-0c4d186d33f7
       version: -1
       name: URL EDL Verification
       type: title
@@ -1251,10 +1248,10 @@ tasks:
     quietmode: 0
   "92":
     id: "92"
-    taskid: 95208148-69e3-4a82-8562-61a6de0968db
+    taskid: a06f110c-7a3d-4964-8944-89bbf4f0baad
     type: title
     task:
-      id: 95208148-69e3-4a82-8562-61a6de0968db
+      id: a06f110c-7a3d-4964-8944-89bbf4f0baad
       version: -1
       name: Done
       type: title
@@ -1266,7 +1263,7 @@ tasks:
       {
         "position": {
           "x": 700,
-          "y": 5420
+          "y": 4910
         }
       }
     note: false
@@ -1276,16 +1273,16 @@ tasks:
     quietmode: 0
   "94":
     id: "94"
-    taskid: e7dd598a-959c-4641-8a90-4024c006dec2
+    taskid: 76f6c82d-c24a-49c7-88ba-a35087fa089e
     type: condition
     task:
-      id: e7dd598a-959c-4641-8a90-4024c006dec2
+      id: 76f6c82d-c24a-49c7-88ba-a35087fa089e
       version: -1
       name: Validate if IP indicator exists
-      description: ''''''
       type: condition
       iscommand: false
       brand: ""
+      description: ''
     nexttasks:
       '#default#':
       - "3"
@@ -1317,16 +1314,16 @@ tasks:
     quietmode: 0
   "95":
     id: "95"
-    taskid: e9ca0fe0-93b6-48e4-8782-ddbba225a45e
+    taskid: b929cbdb-ae87-4f35-8360-c30895319971
     type: condition
     task:
-      id: e9ca0fe0-93b6-48e4-8782-ddbba225a45e
+      id: b929cbdb-ae87-4f35-8360-c30895319971
       version: -1
       name: Validate if URL indicator exists
-      description: ''''''
       type: condition
       iscommand: false
       brand: ""
+      description: ''
     nexttasks:
       '#default#':
       - "73"
@@ -1358,21 +1355,21 @@ tasks:
     quietmode: 0
   "97":
     id: "97"
-    taskid: 90acce83-5948-43e7-8804-94e7e6da7686
+    taskid: 01b2d99c-9466-40a2-8776-5254f85899ea
     type: condition
     task:
-      id: 90acce83-5948-43e7-8804-94e7e6da7686
+      id: 01b2d99c-9466-40a2-8776-5254f85899ea
       version: -1
       name: Validate if URL indicator exists
-      description: ''''''
       type: condition
       iscommand: false
       brand: ""
+      description: ''
     nexttasks:
       '#default#':
       - "73"
       "yes":
-      - "103"
+      - "76"
     separatecontext: false
     conditions:
     - label: "yes"
@@ -1389,7 +1386,7 @@ tasks:
       {
         "position": {
           "x": 930,
-          "y": 3360
+          "y": 3200
         }
       }
     note: false
@@ -1399,21 +1396,21 @@ tasks:
     quietmode: 0
   "98":
     id: "98"
-    taskid: 23ac1072-116f-4b59-8901-be3f45e748b4
+    taskid: 599b0785-071a-4e13-8f8d-392e4862afa1
     type: condition
     task:
-      id: 23ac1072-116f-4b59-8901-be3f45e748b4
+      id: 599b0785-071a-4e13-8f8d-392e4862afa1
       version: -1
       name: Validate if IP indicator exists
-      description: ''''''
       type: condition
       iscommand: false
       brand: ""
+      description: ''
     nexttasks:
       '#default#':
       - "3"
       "yes":
-      - "102"
+      - "41"
     separatecontext: false
     conditions:
     - label: "yes"
@@ -1430,7 +1427,7 @@ tasks:
       {
         "position": {
           "x": 460,
-          "y": 3360
+          "y": 3200
         }
       }
     note: false
@@ -1440,16 +1437,16 @@ tasks:
     quietmode: 0
   "99":
     id: "99"
-    taskid: 7330e615-2877-430a-8a1f-8e3ba4e55395
+    taskid: 32b2997f-afd8-416a-8bf1-2789a89f5d34
     type: condition
     task:
-      id: 7330e615-2877-430a-8a1f-8e3ba4e55395
+      id: 32b2997f-afd8-416a-8bf1-2789a89f5d34
       version: -1
       name: Are there any EDL commit/push warnings?
-      description: ''''''
       type: condition
       iscommand: false
       brand: ""
+      description: ''
     nexttasks:
       '#default#':
       - "3"
@@ -1499,7 +1496,7 @@ tasks:
       {
         "position": {
           "x": 460,
-          "y": 4720
+          "y": 4210
         }
       }
     note: false
@@ -1509,10 +1506,10 @@ tasks:
     quietmode: 0
   "100":
     id: "100"
-    taskid: f463cd3e-f0f6-470a-8b9c-f48d7dfe1448
+    taskid: fb8da102-661c-4256-83bd-8984d87a5e88
     type: regular
     task:
-      id: f463cd3e-f0f6-470a-8b9c-f48d7dfe1448
+      id: fb8da102-661c-4256-83bd-8984d87a5e88
       version: -1
       name: Manually debug EDL warning
       description: |-
@@ -1535,126 +1532,7 @@ tasks:
       {
         "position": {
           "x": 460,
-          "y": 5110
-        }
-      }
-    note: false
-    timertriggers: []
-    ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "101":
-    id: "101"
-    taskid: 6de000f4-b63f-420f-8f05-329a913a3ad4
-    type: regular
-    task:
-      id: 6de000f4-b63f-420f-8f05-329a913a3ad4
-      version: -1
-      name: List PAN-OS rules
-      description: Returns a list of predefined Security Rules.
-      script: '|||panorama-list-rules'
-      type: regular
-      iscommand: true
-      brand: ""
-    nexttasks:
-      '#none#':
-      - "98"
-      - "97"
-    scriptarguments:
-      device-group: {}
-      pre_post:
-        simple: pre-rulebase
-      tag: {}
-    separatecontext: false
-    view: |-
-      {
-        "position": {
-          "x": 700,
-          "y": 3190
-        }
-      }
-    note: false
-    timertriggers: []
-    ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "102":
-    id: "102"
-    taskid: 8a78f264-0909-4711-86ca-46252093a77c
-    type: condition
-    task:
-      id: 8a78f264-0909-4711-86ca-46252093a77c
-      version: -1
-      name: Is there an existing IP EDL security rule?
-      description: ''''''
-      type: condition
-      iscommand: false
-      brand: ""
-    nexttasks:
-      '#default#':
-      - "41"
-      "yes":
-      - "3"
-    separatecontext: false
-    conditions:
-    - label: "yes"
-      condition:
-      - - operator: isEqualString
-          left:
-            value:
-              simple: Panorama.SecurityRule.Name
-            iscontext: true
-          right:
-            value:
-              simple: inputs.ip-edl-object-name
-            iscontext: true
-    view: |-
-      {
-        "position": {
-          "x": 460,
-          "y": 3730
-        }
-      }
-    note: false
-    timertriggers: []
-    ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "103":
-    id: "103"
-    taskid: 41630c80-bae8-485a-866d-7760288b43ca
-    type: condition
-    task:
-      id: 41630c80-bae8-485a-866d-7760288b43ca
-      version: -1
-      name: Is there an existing URL EDL security rule?
-      description: ''''''
-      type: condition
-      iscommand: false
-      brand: ""
-    nexttasks:
-      '#default#':
-      - "76"
-      "yes":
-      - "73"
-    separatecontext: false
-    conditions:
-    - label: "yes"
-      condition:
-      - - operator: isEqualString
-          left:
-            value:
-              simple: Panorama.SecurityRule.Name
-            iscontext: true
-          right:
-            value:
-              simple: inputs.url-edl-object-name
-            iscontext: true
-    view: |-
-      {
-        "position": {
-          "x": 930,
-          "y": 3730
+          "y": 4600
         }
       }
     note: false
@@ -1665,8 +1543,6 @@ tasks:
 view: |-
   {
     "linkLabelsPosition": {
-      "102_3_yes": 0.1,
-      "103_73_yes": 0.1,
       "1_3_#default#": 0.1,
       "1_48_yes": 0.35,
       "23_27_no": 0.74,
@@ -1683,14 +1559,16 @@ view: |-
       "94_62_yes": 0.68,
       "95_73_#default#": 0.1,
       "95_91_yes": 0.68,
-      "97_73_#default#": 0.15,
-      "98_3_#default#": 0.16,
+      "97_73_#default#": 0.27,
+      "97_76_yes": 0.7,
+      "98_3_#default#": 0.28,
+      "98_41_yes": 0.72,
       "99_100_yes": 0.53,
       "99_3_#default#": 0.2
     },
     "paper": {
       "dimensions": {
-        "height": 5655,
+        "height": 5145,
         "width": 1790,
         "x": 0,
         "y": -170
@@ -1700,40 +1578,41 @@ view: |-
 inputs:
 - key: ip-edl-object-name
   value:
-    simple: Cortex XSOAR Remediation - IP EDL
+    simple: Demisto Remediation - IP EDL
   required: false
-  description: Set a name for the EDL object that will be configured on PAN-OS. This
+  description: Set a name for the EDL object that will be configured on pan-os. This
     value is used to set the rule name as well.
   playbookInputQuery:
 - key: url-edl-object-name
   value:
-    simple: Cortex XSOAR Remediation - URL EDL
+    simple: Demisto Remediation - URL EDL
   required: false
-  description: Set a name for the EDL object that will be configured on PAN-OS. This
+  description: Set a name for the EDL object that will be configured on pan-os. This
     value is used to set the rule name as well.
   playbookInputQuery:
 - key: EDLServiceURL
   value: {}
   required: false
-  description: "The EDL service provides serval access methods to the EDL instance.\
-    \ By default, it uses a unique port, configured in the EDL Service integration,\
-    \ and an HTTP session. It is possible to either configure a certificate for the\
-    \ default option or to access the EDL by instance name, which is HTTPS by default.\n\
-    Please refer to the EDL Service integration tip for more information.\nEDLServiceURL\
+  description: "The EDL service provides serval access methods to the EDL instance. By\
+    \ default, it uses a unique port, configured in the EDL Service integration, and\
+    \ an HTTP session. It is possible to either configure a certificate for the default\
+    \ option or to access the EDL by instance name, which is HTTPS by default.\nPlease\
+    \ refer to the EDL Service integration tip for more information.\nEDLServiceURL\
     \ input Examples: \n  1. if not configured with a certificate -  http://cortex-xsoar_address\n\
     \  2. if configured with a certificate - https://cortex-xsoar_address\n\n* Depending\
     \ on the access method to the EDL, the full URL of the EDL is constructed from\
     \ this input, and by InstanceName OR by InstacePort and IndicatorQuery. The playbook\
-    \ identifies which access method is used from the playbook inputs and crafts the\
-    \ correct URL address.\nFull constructed URL examples:\n1. by port  - \n${EDLServiceURL}:${InstancePort}/${IndicatorQuery}\n\
-    2. By Instance Name - \n${EDLServiceURL}:${InstanceName}/${IndicatorQuery}\n "
+    \ identifies which access method is used from the playbook inputs and crafts\
+    \ the correct URL address.\nFull constructed URL examples:\n1. by port \
+    \ - \n${EDLServiceURL}:${InstancePort}/${IndicatorQuery}\n2. By Instance Name\
+    \ - \n${EDLServiceURL}:${InstanceName}/${IndicatorQuery}\n "
   playbookInputQuery:
 - key: InstanceName
   value: {}
   required: false
   description: "Name of the instance as configured in EDL Service integration. \n\
-    Only needed when accessing EDL Service by instance name.\nRefer to the EDL Service\
-    \ integration tip for more information."
+    Only needed when accessing EDL Service by instance name.\nRefer to the\
+    \ EDL Service integration tip for more information."
   playbookInputQuery:
 - key: InstancePort
   value: {}
@@ -1833,6 +1712,5 @@ outputs:
 - contextPath: Panorama.EDL.Name
   description: Name of theEDL.
 quiet: true
-fromversion: 5.5.0
 tests:
-- No tests (auto formatted)
+- No test

@@ -1,5 +1,6 @@
 id: IP Enrichment - Internal - Generic v2
 version: -1
+fromversion: 4.1.0
 name: IP Enrichment - Internal - Generic v2
 description: |-
   Enrich Internal IP addresses using one or more integrations.
@@ -17,9 +18,9 @@ tasks:
       id: 6635b28b-bdf1-42cf-88bc-14ad75e9ebe0
       version: -1
       name: ""
+      description: ""
       iscommand: false
       brand: ""
-      description: ''
     nexttasks:
       '#none#':
       - "28"
@@ -34,8 +35,6 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "24":
     id: "24"
     taskid: 8149db7c-af8d-41e2-85ee-c9fe2efd5040
@@ -44,10 +43,10 @@ tasks:
       id: 8149db7c-af8d-41e2-85ee-c9fe2efd5040
       version: -1
       name: Done
+      description: ""
       type: title
       iscommand: false
       brand: ""
-      description: ''
     separatecontext: false
     view: |-
       {
@@ -59,8 +58,6 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "26":
     id: "26"
     taskid: a22c2045-33e0-4ad3-8627-15886227f805
@@ -69,10 +66,10 @@ tasks:
       id: a22c2045-33e0-4ad3-8627-15886227f805
       version: -1
       name: Enrich internal IP addresses
+      description: ""
       type: title
       iscommand: false
       brand: ""
-      description: ''
     nexttasks:
       '#none#':
       - "35"
@@ -87,8 +84,6 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "28":
     id: "28"
     taskid: f52523d0-362f-4f1e-8c16-443889e17ff1
@@ -125,8 +120,6 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "34":
     id: "34"
     taskid: 22936bea-a0fc-4095-8fb7-9d74fa41159e
@@ -167,8 +160,6 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "35":
     id: "35"
     taskid: edbdb306-f624-4395-84b2-7fba28c31161
@@ -184,7 +175,7 @@ tasks:
       brand: ""
     nexttasks:
       '#none#':
-      - "43"
+      - "42"
     scriptarguments:
       ip:
         complex:
@@ -223,8 +214,6 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "39":
     id: "39"
     taskid: cbcd10d8-201a-414d-8356-6006c81ed53c
@@ -275,8 +264,6 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "40":
     id: "40"
     taskid: 38e2fd1f-3863-4034-80af-14cb06cbcf25
@@ -285,9 +272,9 @@ tasks:
       id: 38e2fd1f-3863-4034-80af-14cb06cbcf25
       version: -1
       name: Determine whether the IP address is internal or external
-      description: "Checks if the IP address is in the internal IP address ranges.\n\
-        If internal, sets the \"InRange\" attribute to \"yes\".\nIf external, sets\
-        \ the \"InRange\" attribute to \"no\". \n"
+      description: "Checks if the IP address is in the internal IP address ranges.\nIf
+        internal, sets the \"InRange\" attribute to \"yes\".\nIf external, sets the
+        \"InRange\" attribute to \"no\". \n"
       scriptName: IsIPInRanges
       type: regular
       iscommand: false
@@ -318,8 +305,6 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
   "41":
     id: "41"
     taskid: 3dbd6139-a053-466c-8abf-86544d804022
@@ -328,10 +313,10 @@ tasks:
       id: 3dbd6139-a053-466c-8abf-86544d804022
       version: -1
       name: No Internal IP Address
+      description: ""
       type: title
       iscommand: false
       brand: ""
-      description: ''
     nexttasks:
       '#none#':
       - "24"
@@ -346,21 +331,19 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "43":
-    id: "43"
-    taskid: acd2b45b-1061-40bf-8bdc-604633f334a6
+  "42":
+    id: "42"
+    taskid: d3091e4c-f852-496d-81b1-54b37f0ae47d
     type: playbook
     task:
-      id: acd2b45b-1061-40bf-8bdc-604633f334a6
+      id: d3091e4c-f852-496d-81b1-54b37f0ae47d
       version: -1
-      name: Endpoint Enrichment - Generic v2.1
-      playbookName: Endpoint Enrichment - Generic v2.1
+      name: Endpoint Enrichment - Generic v2
+      description: ""
+      playbookName: Endpoint Enrichment - Generic v2
       type: playbook
       iscommand: false
       brand: ""
-      description: ''
     nexttasks:
       '#none#':
       - "24"
@@ -377,7 +360,6 @@ tasks:
               right:
                 value:
                   simple: inputs.IP
-                iscontext: true
           accessor: Hostname
           transformers:
           - operator: uniq
@@ -386,7 +368,6 @@ tasks:
       iscommand: false
       exitCondition: ""
       wait: 1
-      max: 100
     view: |-
       {
         "position": {
@@ -397,8 +378,6 @@ tasks:
     note: false
     timertriggers: []
     ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
 view: |-
   {
     "linkLabelsPosition": {
@@ -428,24 +407,21 @@ inputs:
       - operator: uniq
   required: false
   description: The IP address to enrich.
-  playbookInputQuery:
 - key: InternalRange
   value:
     simple: inputs.InternalRange
   required: false
-  description: "A CSV list of IP address ranges (in CIDR notation). Use this list\
-    \ to check if an IP address is found within a set of IP address ranges. \nFor\
-    \ example: \"172.16.0.0/12,10.0.0.0/8,192.168.0.0/16\" (without quotes). If no\
-    \ list is provided, will use default list provided in the IsIPInRanges script\
-    \ (the known IPv4 private address ranges)."
-  playbookInputQuery:
+  description: "A CSV list of IP address ranges (in CIDR notation). Use this list
+    to check if an IP address is found within a set of IP address ranges. \nFor example:
+    \"172.16.0.0/12,10.0.0.0/8,192.168.0.0/16\" (without quotes). If no list is provided,
+    will use default list provided in the IsIPInRanges script (the known IPv4 private
+    address ranges)."
 - key: ResolveIP
   value:
     complex:
       root: inputs.ResolveIP
   required: true
   description: Whether to convert the IP address to a hostname using a DNS query (True/False).
-  playbookInputQuery:
 outputs:
 - contextPath: IP
   description: The IP objects.
@@ -469,6 +445,5 @@ outputs:
 - contextPath: Endpoint.Domain
   description: Endpoint domain name.
   type: string
-fromversion: 4.1.0
 tests:
-- IP Enrichment - Generic v2 - Test
+  - IP Enrichment - Generic v2 - Test

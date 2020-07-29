@@ -499,5 +499,5 @@ script:
       description: The alert ID for which to get remediation details.
   isfetch: true
   runonce: false
-defaultclassifier: RedLock
-defaultmapperin: RedLock-mapper
+defaultClassifier: RedLock
+defaultMapperIn: RedLock-mapper

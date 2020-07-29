@@ -1,16 +1,20 @@
 {
     "name": "Compliance",
-    "description": "Compliance pack is the base pack for compliance-related packs, such as HIPAA, GDPR and US breach notification.",
+    "description": "This pack contains essential incidents fields for compliance packs.",
     "support": "xsoar",
-    "currentVersion": "1.0.5",
+    "currentVersion": "1.0.1",
     "author": "Cortex XSOAR",
     "url": "https://www.paloaltonetworks.com/cortex",
     "email": "",
     "categories": [],
     "tags": [
+        "Compliance",
         "Breach",
         "GDPR",
-        "HIPAA"
+        "US",
+        "Notification",
+        "Breach notification",
+        "Data breach"
     ],
     "created": "2020-05-10T10:50:52Z",
     "useCases": [

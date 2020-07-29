@@ -1135,6 +1135,7 @@ tasks:
       unpack_nested_elements:
         simple: "true"
     reputationcalc: 3
+    continueonerror: true
     separatecontext: false
     view: |-
       {
@@ -1342,4 +1343,4 @@ outputs:
   type: unknown
 fromversion: 5.0.0
 tests:
-- Process Email - Generic - Test - Incident Starter
+- process_email_-_generic_-_test

@@ -1,6 +1,7 @@
 id: RiskSense Get Hosts - Test
 version: -1
 name: RiskSense Get Hosts - Test
+fromversion: 5.0.0
 description: This playbook uses the RiskSense integration and tests the various scenarios
   of the "risksense-get-hosts" command.  
 starttaskid: "0"
@@ -10,12 +11,12 @@ tasks:
     taskid: 60735bea-3e37-4946-86c0-94dc60b59fcd
     type: start
     task:
+      description: ""
       id: 60735bea-3e37-4946-86c0-94dc60b59fcd
       version: -1
       name: ""
       iscommand: false
       brand: ""
-      description: ''
     nexttasks:
       '#none#':
       - "23"
@@ -35,13 +36,13 @@ tasks:
     taskid: 331b4be0-b091-4dd8-8d50-f8c5d77f226e
     type: title
     task:
+      description: ""
       id: 331b4be0-b091-4dd8-8d50-f8c5d77f226e
       version: -1
       name: DONE
       type: title
       iscommand: false
       brand: ""
-      description: ''
     separatecontext: false
     view: |-
       {
@@ -322,14 +323,14 @@ tasks:
       '#none#':
       - "27"
     scriptarguments:
-      exclude: {}
+      exclusive_operator: {}
       fieldname: {}
       operator: {}
       page: {}
       size:
         simple: "5"
       sort_by: {}
-      sort_direction:
+      sort_order:
         simple: DESC
       value: {}
     separatecontext: false
@@ -426,4 +427,3 @@ view: |-
   }
 inputs: []
 outputs: []
-fromversion: 5.0.0

@@ -3191,14 +3191,11 @@ def is_valid_header_to_parse(header):
 
 
 def create_headers_map(msg_dict_headers):
-    headers = list()  # type: list
+    headers = []
     headers_map = dict()  # type: dict
-
-    if not msg_dict_headers:
-        return headers, headers_map
-
     header_key = 'initial key'
     header_value = 'initial header'
+
     for header in msg_dict_headers.split('\n'):
         if is_valid_header_to_parse(header):
             if not header[0] == ' ' and not header[0] == '\t':
@@ -3279,14 +3276,14 @@ def data_to_md(email_data, email_file_name=None, parent_email_file=None, print_o
     md += u"* {0}:\t{1}\n".format('To', email_data.get('To') or "")
     md += u"* {0}:\t{1}\n".format('CC', email_data.get('CC') or "")
     md += u"* {0}:\t{1}\n".format('Subject', email_data.get('Subject') or "")
-    if email_data.get('Text'):
+    if 'Text' in email_data:
         text = email_data['Text'].replace('<', '[').replace('>', ']')
         md += u"* {0}:\t{1}\n".format('Body/Text', text or "")
-    if email_data.get('HTML'):
+    if 'HTML' in email_data:
         md += u"* {0}:\t{1}\n".format('Body/HTML', email_data['HTML'] or "")
 
     md += u"* {0}:\t{1}\n".format('Attachments', email_data.get('Attachments') or "")
-    md += u"\n\n" + tableToMarkdown('HeadersMap', email_data.get('HeadersMap'))
+    md += u"\n\n" + tableToMarkdown('HeadersMap', email_data['HeadersMap'])
     return md
 
 
@@ -3375,13 +3372,13 @@ def handle_msg(file_path, file_name, parse_only_headers=False, max_depth=3):
 
     msg_dict = msg.as_dict(max_depth)
     mail_format_type = get_msg_mail_format(msg_dict)
-    headers, headers_map = create_headers_map(msg_dict.get('Headers'))
+    headers, headers_map = create_headers_map(msg_dict['Headers'])
 
     email_data = {
         'To': msg_dict['To'],
         'CC': msg_dict['CC'],
         'From': msg_dict['From'],
-        'Subject': headers_map.get('Subject'),
+        'Subject': headers_map['Subject'],
         'HTML': msg_dict['HTML'],
         'Text': msg_dict['Text'],
         'Headers': headers,
@@ -3656,8 +3653,7 @@ def main():
         if is_error(result):
             return_error(get_error(result))
 
-        file_metadata = result[0]['FileMetadata']
-        file_type = file_metadata.get('info', '') or file_metadata.get('type', '')
+        file_type = result[0]['FileMetadata'].get('info', '')
 
     except Exception as ex:
         return_error(
@@ -3671,8 +3667,8 @@ def main():
             email_data, attached_emails = handle_msg(file_path, file_name, parse_only_headers, max_depth)
             output = create_email_output(email_data, attached_emails)
 
-        elif any(eml_candidate in file_type_lower for eml_candidate in
-                 ['rfc 822 mail', 'smtp mail', 'multipart/signed', 'message/rfc822']):
+        elif 'rfc 822 mail' in file_type_lower or 'smtp mail' in file_type_lower or 'multipart/signed' \
+                in file_type_lower:
             if 'unicode (with bom) text' in file_type_lower:
                 email_data, attached_emails = handle_eml(
                     file_path, False, file_name, parse_only_headers, max_depth, bom=True

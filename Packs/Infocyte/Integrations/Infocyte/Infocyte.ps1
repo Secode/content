@@ -70,7 +70,7 @@ function Get-InfocyteAlerts {
         $Demisto.Debug("Retreiving $max alerts following lastAlertId: $($demisto.Args()['lastAlertId'])")
         $Alerts = Get-ICAlert -where $where | Select-Object -First $max
         if (-NOT $Alerts) {
-            $Demisto.Debug("No alerts found following lastAlertId $($demisto.Args()['lastAlertId']).")
+            $Demisto.Log("No alerts found following lastAlertId $($demisto.Args()['lastAlertId']).")
             return
         }
     }
@@ -86,14 +86,14 @@ function Get-InfocyteAlerts {
         }
         $Alerts = Get-ICAlert -where $where | Select-Object -First $max_fetch
         if (-NOT $Alerts) {
-            $Demisto.Debug("No new alerts found.")
+            $Demisto.Log("No new alerts found.")
+            if ($LastRun.lastAlertId) {
+                $Demisto.SetLastRun(@{ lastAlertId = $LastRun.lastAlertId })
+            }
+            return
         }
-        else {
-            $LastAlertId = $Alerts | Select-Object -Last 1 -ExpandProperty id
-            $lr = @{ lastAlertId = $LastAlertId }
-            $Demisto.Debug("Setting LastRunId: $lr")
-            $Demisto.SetLastRun($lr)
-        }
+        $LastAlertId = $Alerts | Select-Object -Last 1 -ExpandProperty id
+        $Demisto.SetLastRun(@{ lastAlertId = $LastAlertId})
     }
     $Output = [PSCustomObject]@{
         'Infocyte.Alert' = $Alerts | Select-Object id,

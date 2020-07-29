@@ -10,7 +10,9 @@
     "categories": [
         "Email Gateway"
     ],
-    "tags": [],
+    "tags": [
+        "Proofpoint Threat Response (Beta)"
+    ],
     "useCases": [],
     "keywords": []
 }

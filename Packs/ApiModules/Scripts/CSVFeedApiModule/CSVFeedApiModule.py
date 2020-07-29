@@ -7,12 +7,10 @@ import csv
 import gzip
 import urllib3
 from dateutil.parser import parse
-from typing import Optional, Pattern, Dict, Any, Tuple, Union, List
+from typing import Optional, Pattern, Dict, Any, Tuple, Union
 
 # disable insecure warnings
 urllib3.disable_warnings()
-
-# Globals
 
 
 class Client(BaseClient):
@@ -20,7 +18,7 @@ class Client(BaseClient):
                  insecure: bool = False, credentials: dict = None, ignore_regex: str = None, encoding: str = 'latin-1',
                  delimiter: str = ',', doublequote: bool = True, escapechar: str = '',
                  quotechar: str = '"', skipinitialspace: bool = False, polling_timeout: int = 20, proxy: bool = False,
-                 feedTags: Optional[str] = None, **kwargs):
+                 **kwargs):
         """
         :param url: URL of the feed.
         :param feed_url_to_config: for each URL, a configuration of the feed that contains
@@ -62,7 +60,6 @@ class Client(BaseClient):
         :param polling_timeout: timeout of the polling request in seconds. Default: 20
         :param proxy: Sets whether use proxy when sending requests
         """
-        self.tags: List[str] = argToList(feedTags)
         if not credentials:
             credentials = {}
 
@@ -271,19 +268,13 @@ def fetch_indicators_command(client: Client, default_indicator_type: str, auto_d
                         'rawJSON': raw_json,
                         'fields': create_fields_mapping(raw_json, mapping) if mapping else {}
                     }
-                    indicator['fields']['tags'] = client.tags
                     indicators.append(indicator)
     return indicators
 
 
-def get_indicators_command(client, args: dict, tags: Optional[List[str]] = None):
-    if tags is None:
-        tags = []
+def get_indicators_command(client, args):
     itype = args.get('indicator_type', demisto.params().get('indicator_type'))
-    try:
-        limit = int(args.get('limit', 50))
-    except ValueError:
-        raise ValueError('The limit argument must be a number.')
+    limit = int(args.get('limit'))
     auto_detect = demisto.params().get('auto_detect_type')
     indicators_list = fetch_indicators_command(client, itype, auto_detect)
     entry_result = indicators_list[:limit]
@@ -308,11 +299,7 @@ def feed_main(feed_name, params=None, prefix=''):
     }
     try:
         if command == 'fetch-indicators':
-            indicators = fetch_indicators_command(
-                client,
-                params.get('indicator_type'),
-                params.get('auto_detect_type')
-            )
+            indicators = fetch_indicators_command(client, params.get('indicator_type'), params.get('auto_detect_type'))
             # we submit the indicators in batches
             for b in batch(indicators, batch_size=2000):
                 demisto.createIndicators(b)  # type: ignore

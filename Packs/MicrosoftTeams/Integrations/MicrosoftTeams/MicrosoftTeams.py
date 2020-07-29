@@ -438,8 +438,7 @@ def get_graph_access_token() -> str:
     tenant_id: str = integration_context.get('tenant_id', '')
     if not tenant_id:
         raise ValueError(
-            'Did not receive tenant ID from Microsoft Teams, verify the messaging endpoint is configured correctly. '
-            'See https://xsoar.pan.dev/docs/reference/integrations/microsoft-teams#troubleshooting for more information'
+            'Did not receive tenant ID from Microsoft Teams, verify the messaging endpoint is configured correctly.'
         )
     url: str = f'https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token'
     data: dict = {
@@ -1532,8 +1531,7 @@ def ring_user():
     tenant_id: str = integration_context.get('tenant_id', '')
     if not tenant_id:
         raise ValueError(
-            'Did not receive tenant ID from Microsoft Teams, verify the messaging endpoint is configured correctly. '
-            'See https://xsoar.pan.dev/docs/reference/integrations/microsoft-teams#troubleshooting for more information'
+            'Did not receive tenant ID from Microsoft Teams, verify the messaging endpoint is configured correctly.'
         )
     # get user to call name and id
     username_to_call = demisto.args().get('username')

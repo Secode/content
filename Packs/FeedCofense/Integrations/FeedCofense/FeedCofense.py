@@ -34,7 +34,6 @@ class Client(BaseClient):
             verify: bool = False,
             proxy: bool = False,
             read_time_out: Optional[float] = 120.0,
-            tags: list = []
     ):
         """Constructor of Client and BaseClient
 
@@ -47,7 +46,6 @@ class Client(BaseClient):
             verify {bool} -- Should verify certificate. (default: {False})
             proxy {bool} -- Should use proxy. (default: {False})
             read_time_out {int} -- Read time out in seconds. (default: {30})
-            tags {list} -- A list of tags to add to the feed.
         """
         self.read_time_out = read_time_out
         self.threat_type = (
@@ -56,7 +54,6 @@ class Client(BaseClient):
 
         # Request related attributes
         self.suffix = "/apiv1/threat/search/"
-        self.tags = tags
 
         super().__init__(url, verify=verify, proxy=proxy, auth=auth)
 
@@ -140,7 +137,8 @@ class Client(BaseClient):
                 indicator_type = FeedIndicatorType.DomainGlob
         return indicator_type, value
 
-    def process_item(self, threat: dict) -> List[dict]:
+    @classmethod
+    def process_item(cls, threat: dict) -> List[dict]:
         """Gets a threat and processes them.
 
         Arguments:
@@ -158,7 +156,7 @@ class Client(BaseClient):
         block_set: List[dict] = threat.get("blockSet", [])
         threat_id = threat.get("id")
         for block in block_set:
-            indicator, value = self._convert_block(block)
+            indicator, value = cls._convert_block(block)
             block["value"] = value
             block["type"] = indicator
             block["threat_id"] = threat_id
@@ -170,7 +168,6 @@ class Client(BaseClient):
                     "type": indicator,
                     "rawJSON": block,
                     "fields": {
-                        "tags": self.tags,
                         "name": threat_id,
                         "malwarefamily": malware_family.get("familyName"),
                         "description": malware_family.get("description"),
@@ -315,8 +312,7 @@ def main():
     verify = not params.get("insecure")
     proxy = params.get("proxy")
     threat_type = params.get("threat_type")
-    tags = argToList(params.get('feedTags'))
-    client = Client(url, auth=auth, verify=verify, proxy=proxy, threat_type=threat_type, tags=tags)
+    client = Client(url, auth=auth, verify=verify, proxy=proxy, threat_type=threat_type)
 
     demisto.info(f"Command being called is {demisto.command()}")
     try:

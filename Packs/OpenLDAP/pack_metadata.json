@@ -10,7 +10,9 @@
     "categories": [
         "Authentication"
     ],
-    "tags": [],
+    "tags": [
+        "OpenLDAP (Beta)"
+    ],
     "useCases": [],
     "keywords": []
 }

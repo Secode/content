@@ -5,14 +5,15 @@ starttaskid: "0"
 tasks:
   "0":
     id: "0"
-    taskid: 59581c2f-91b8-4647-806a-f72810eb1003
+    taskid: 84bd5c2a-7ed5-4ac8-8e40-0a35f00ee98a
     type: start
     task:
-      id: 59581c2f-91b8-4647-806a-f72810eb1003
+      id: 84bd5c2a-7ed5-4ac8-8e40-0a35f00ee98a
       version: -1
       name: ""
       iscommand: false
       brand: ""
+      description: ""
     nexttasks:
       '#none#':
       - "2"
@@ -20,7 +21,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 265,
+          "x": 50,
           "y": 50
         }
       }
@@ -31,10 +32,10 @@ tasks:
     quietmode: 0
   "1":
     id: "1"
-    taskid: cdbecdbb-bab3-418a-8b12-8d1338e2b265
+    taskid: f1ae0fa4-4cfa-4194-8dac-3964fa213d3b
     type: regular
     task:
-      id: cdbecdbb-bab3-418a-8b12-8d1338e2b265
+      id: f1ae0fa4-4cfa-4194-8dac-3964fa213d3b
       version: -1
       name: mitre-get-indicators
       description: Retreives a limited number of the indicators .
@@ -53,7 +54,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 265,
+          "x": 50,
           "y": 370
         }
       }
@@ -64,10 +65,10 @@ tasks:
     quietmode: 0
   "2":
     id: "2"
-    taskid: 90b52ed3-6655-4611-8066-790e4c7aff5a
+    taskid: e3634256-778d-465d-848a-2980aaf7ff41
     type: regular
     task:
-      id: 90b52ed3-6655-4611-8066-790e4c7aff5a
+      id: e3634256-778d-465d-848a-2980aaf7ff41
       version: -1
       name: DeleteContext
       description: Delete field from context
@@ -89,7 +90,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 265,
+          "x": 50,
           "y": 195
         }
       }
@@ -100,20 +101,19 @@ tasks:
     quietmode: 0
   "3":
     id: "3"
-    taskid: b9fc5ae5-9c1f-48e0-82b5-cafaf147a619
+    taskid: 6a74b4aa-f80c-4921-860b-9434d8e6e6de
     type: condition
     task:
-      id: b9fc5ae5-9c1f-48e0-82b5-cafaf147a619
+      id: 6a74b4aa-f80c-4921-860b-9434d8e6e6de
       version: -1
       name: Indiactors found
       type: condition
       iscommand: false
       brand: ""
+      description: ""
     nexttasks:
-      '#default#':
-      - "6"
       "yes":
-      - "5"
+      - "4"
     separatecontext: false
     conditions:
     - label: "yes"
@@ -134,7 +134,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 265,
+          "x": 50,
           "y": 545
         }
       }
@@ -145,81 +145,21 @@ tasks:
     quietmode: 0
   "4":
     id: "4"
-    taskid: 731b40ee-d7e6-4810-8f0e-8ee8433f5999
+    taskid: 080b69a4-a2bf-44b2-8837-b72fd78de834
     type: title
     task:
-      id: 731b40ee-d7e6-4810-8f0e-8ee8433f5999
+      id: 080b69a4-a2bf-44b2-8837-b72fd78de834
       version: -1
       name: Complete
       type: title
       iscommand: false
       brand: ""
+      description: ""
     separatecontext: false
     view: |-
       {
         "position": {
           "x": 50,
-          "y": 895
-        }
-      }
-    note: false
-    timertriggers: []
-    ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "5":
-    id: "5"
-    taskid: ba18d85d-fa0f-473b-894c-1014b7b858d9
-    type: regular
-    task:
-      id: ba18d85d-fa0f-473b-894c-1014b7b858d9
-      version: -1
-      name: mitre-reputation with non existing ID
-      description: Lookup reputation in the indicators.
-      script: MITRE ATT&CK|||mitre-reputation
-      type: regular
-      iscommand: true
-      brand: MITRE ATT&CK
-    nexttasks:
-      '#none#':
-      - "4"
-    scriptarguments:
-      indicator:
-        simple: T153111
-    separatecontext: false
-    view: |-
-      {
-        "position": {
-          "x": 50,
-          "y": 720
-        }
-      }
-    note: false
-    timertriggers: []
-    ignoreworker: false
-    skipunavailable: false
-    quietmode: 0
-  "6":
-    id: "6"
-    taskid: e5f7d1d2-e80b-4516-8027-326c08046dd4
-    type: regular
-    task:
-      id: e5f7d1d2-e80b-4516-8027-326c08046dd4
-      version: -1
-      name: Print error from get-indicators
-      description: Prints an error entry with a given message
-      scriptName: PrintErrorEntry
-      type: regular
-      iscommand: false
-      brand: ""
-    scriptarguments:
-      message:
-        simple: mitre IOCs not found
-    separatecontext: false
-    view: |-
-      {
-        "position": {
-          "x": 480,
           "y": 720
         }
       }
@@ -233,8 +173,8 @@ view: |-
     "linkLabelsPosition": {},
     "paper": {
       "dimensions": {
-        "height": 910,
-        "width": 810,
+        "height": 735,
+        "width": 380,
         "x": 50,
         "y": 50
       }
@@ -242,3 +182,5 @@ view: |-
   }
 inputs: []
 outputs: []
+fromversion: 5.5.0
+description: ""
