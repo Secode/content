@@ -144,10 +144,10 @@ def fetch_incidents():
 def fetch_blobs():
     """Download one or more blobs from provided event_id
     """
-    event_id = demisto.getArg('event_id')
+    event_id = demisto.args().get('event_id')
 
-    if demisto.getArg('timestamp'):
-        timestamp = dateutil.parser.parse(demisto.getArg('timestamp'))
+    if demisto.args().get('timestamp'):
+        timestamp = dateutil.parser.parse(demisto.args().get('timestamp'))
         now = dateutil.parser.parse(datetime.utcnow().isoformat())
         diff = now.replace(tzinfo=timezone.utc) - timestamp.replace(tzinfo=timezone.utc)
 
